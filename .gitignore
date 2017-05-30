@@ -1,0 +1,13 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+#Others
+bower_components
+node_modules
+npm-debug.log
+sftp-config.json
