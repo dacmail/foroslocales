@@ -15,6 +15,9 @@ assets/*
 wp-content/w3tc-config/
 wp-content/db.php
 wp-content/object-cache.php
+readme.html
+license.txt
+
 
 ### OSX ###
 .DS_Store
