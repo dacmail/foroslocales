@@ -23,6 +23,8 @@ function setup() {
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
   add_theme_support('title-tag');
+  add_theme_support('custom-logo');
+  add_theme_support('custom-header');
 
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
@@ -49,6 +51,20 @@ function setup() {
   add_editor_style(Assets\asset_path('styles/main.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
+
+
+function ungrynerd_custom_logo_setup() {
+  $defaults = array(
+    'height'      => 100,
+    'width'       => 400,
+    'flex-height' => true,
+    'flex-width'  => true,
+    'header-text' => array( 'site-title', 'site-description' ),
+  );
+  add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', __NAMESPACE__ . '\\ungrynerd_custom_logo_setup' );
+
 
 /**
  * Register sidebars
@@ -104,3 +120,4 @@ function assets() {
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
