@@ -1,3 +1,27 @@
+
+/*
+  List home events
+*/
+.events-list {
+  padding-top: 10px;
+  &__event {
+    padding: 20px;
+    border-top: 2px solid $black;
+    a {
+      font-size: 16px;
+      font-weight: bold;
+      color: $black;
+      display: block;
+      margin-bottom: 11px;
+    }
+    &__date {
+      background: url('../images/icon-calendar.svg') no-repeat left top;
+      line-height: 18px;
+      background-size: 14px;
+      padding-left: 20px;
+    }
+  }
+}
 .em-calendar {
   width: 100%;
   tr {
