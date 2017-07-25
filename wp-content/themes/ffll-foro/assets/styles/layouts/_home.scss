@@ -1,0 +1,15 @@
+.calendar-home {
+  padding-bottom: 60px;
+  .button-wrapper {
+    text-align: right;
+  }
+}
+.documents-home {
+  background-color: $light;
+  padding:60px 0px;
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
