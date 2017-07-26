@@ -105,5 +105,11 @@ function ungrynerd_doc_taxonomies() {
         )
     );
 }
-
 add_action( 'init', __NAMESPACE__ . '\ungrynerd_doc_taxonomies', 0);
+
+function ungrynerd_form_tag($scanned_tag) {
+  $pipes = new \WPCF7_Pipes( $scanned_tag['raw_values'] );
+  $scanned_tag['values'] = $pipes->collect_afters();
+  return $scanned_tag;
+}
+add_filter('wpcf7_form_tag', __NAMESPACE__ . '\ungrynerd_form_tag',10,1);
