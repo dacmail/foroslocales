@@ -17,10 +17,25 @@
       align-items: center;
       display: flex;
       justify-content: center;
+      &.png {
+        background-color: $png;
+      }
+      &.jpg {
+        background-color: $jpg;
+      }
+      &.doc {
+        background-color: $doc;
+      }
+      &.gif {
+        background-color: $gif;
+      }
+      &.ppt {
+        background-color: $ppt;
+      }
     }
     &__name {
       padding-left: 20px;
-      flex: 1 1 auto;
+      flex: 1 1 40%;
 
     }
     &__tags {
