@@ -53,6 +53,7 @@
     background-color: $white;
     border: solid 5px $black;
     margin: 0px 0px 20px 0px;
+    position: relative;
     select {
       padding: 15px 20px;
       width: 130%;
@@ -67,6 +68,15 @@
       &:focus {
         outline: none;
       }
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      border: 8px solid transparent;
+      border-top: 10px solid $black;
+      top:50%;
+      right: 20px;
+      margin-top: -5px;
     }
   }
   .wpcf7-submit {

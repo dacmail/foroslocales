@@ -1,4 +1,5 @@
 <?php use Roots\Sage\Assets; ?>
+<?php use Roots\Sage\Extras; ?>
 
 <section class="preheader">
   <div class="container">
@@ -9,11 +10,26 @@
   </div>
 </section>
 <nav class="menu nav-primary">
-  <?php
-  if (has_nav_menu('primary_navigation')) :
-    wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
-  endif;
-  ?>
+  <div class="container">
+    <div class="navbar navbar-toggleable-md justify-content-between">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          Menú
+        </span>
+      </button>
+      <?php
+      if (has_nav_menu('primary_navigation')) :
+        wp_nav_menu([
+          'theme_location' => 'primary_navigation',
+          'menu_class' => 'nav navbar-nav ml-auto',
+          'container_id' => 'primary-nav',
+          'container_class' => 'collapse navbar-collapse navbar-right',
+          'items_wrap' => '<div class="search-wrapper">' . get_search_form(false) . '<a href="#" class="search__close">' . Extras\ungrynerd_svg('icon-close') . '</a></div><ul id="%1$s" class="%2$s">%3$s</ul>'
+        ]);
+      endif;
+      ?>
+    </div>
+  </div>
 </nav>
 <header class="header" style="background-color: #<?php header_textcolor(); ?>;">
   <div class="container" style="background-image:url(<?php header_image(); ?>);">

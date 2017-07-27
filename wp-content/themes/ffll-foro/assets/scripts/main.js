@@ -19,6 +19,15 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        $('.nav-primary .menu-item.search a').on('click', function(event) {
+          event.preventDefault();
+          $('.search-wrapper').addClass('open');
+          $('.search-field').focus();
+        });
+        $('.search-wrapper').on('click', '.search__close', function(event) {
+          event.preventDefault();
+          $('.search-wrapper').removeClass('open');
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
