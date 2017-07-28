@@ -1,0 +1,40 @@
+.footer {
+  padding-top: 80px;
+  border-top: solid 2px $black;
+  .logo-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 75px;
+    .custom-logo-link {
+      img {
+        height: 40px;
+        width: auto;
+      }
+    }
+    .nav {
+      padding: 0px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .menu-item {
+        font-weight: bold;
+        color: $black;
+        margin-left: 30px;
+        text-transform: lowercase;
+        a {
+          color: $black;
+          &:after {
+            content: '.';
+          }
+        }
+      }
+    }
+  }
+}
+.footer-bg {
+  min-height: 256px;
+  width: 100%;
+  background: url('../images/bg-footer.jpg') no-repeat center center;
+  background-size: 100% auto;
+}
