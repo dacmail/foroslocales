@@ -40,6 +40,17 @@
 
 .nav-primary {
   background-color: $black;
+  .blog-name {
+    color: $white;
+    font-weight: bold;
+    flex: 1 0 auto;
+    display: block;
+    opacity: 0;
+    transition: opacity .3s linear;
+    &.visible {
+      opacity: 1;
+    }
+  }
   .navbar {
     padding: 0px;
     height: 60px;

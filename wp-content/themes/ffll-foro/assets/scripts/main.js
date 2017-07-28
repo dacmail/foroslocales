@@ -28,6 +28,12 @@
           event.preventDefault();
           $('.search-wrapper').removeClass('open');
         });
+        $(window).scroll(function() {
+          if ($(window).scrollTop()>200)
+            $('.nav-primary .blog-name').addClass('visible');
+          else
+            $('.nav-primary .blog-name').removeClass('visible');
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

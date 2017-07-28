@@ -3,13 +3,9 @@
 <footer class="footer">
   <div class="container">
     <section class="logo-menu">
-      <?php if (has_custom_logo()): ?>
-        <?php the_custom_logo(); ?>
-      <?php else: ?>
-        <a class="header__site-name" href="<?= esc_url(home_url('/')); ?>">
-          <?php bloginfo('name'); ?>
-        </a>
-      <?php endif ?>
+      <a class="blog-name" href="<?= esc_url(home_url('/')); ?>">
+        <?php bloginfo('name'); ?>
+      </a>
       <nav class="navbar">
         <?php
           if (has_nav_menu('footer_navigation')) :

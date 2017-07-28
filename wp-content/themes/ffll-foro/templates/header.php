@@ -9,9 +9,10 @@
     </a>
   </div>
 </section>
-<nav class="menu nav-primary">
+<nav class="menu nav-primary sticky-top">
   <div class="container">
     <div class="navbar navbar-toggleable-md justify-content-between">
+      <span class="blog-name"><?php bloginfo('name'); ?></span>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
           Menú

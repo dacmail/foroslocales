@@ -6,11 +6,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 75px;
-    .custom-logo-link {
-      img {
-        height: 40px;
-        width: auto;
-      }
+    .blog-name {
+      color: $black;
+      font-weight: bold;
     }
     .nav {
       padding: 0px;
