@@ -154,6 +154,7 @@ function ungrynerd_filter_documents($query) {
                           'terms'    => get_query_var('tipo'),
                         );
     }
+    $query->set('page', get_query_var('paged'));
     $query->set('tax_query', $tax_query);
   }
 }
@@ -168,3 +169,37 @@ function ungrynerd_doc_icon($extension = '') {
   }
   return ungrynerd_svg($icon);
 }
+
+
+function ungrynerd_pagination($query=null) {
+    global $wp_query;
+    $query = $query ? $query : $wp_query;
+    $big = 999999999;
+    if (get_query_var('por')) {
+      $args['por'] = get_query_var('por');
+    }
+    if (get_query_var('tipo')) {
+      $args['tipo'] = get_query_var('tipo');
+    }
+    $paginate = paginate_links( array(
+      'base' => str_replace($big, '%#%', esc_url(remove_query_arg(array('tipo', 'por'), get_pagenum_link($big, false)))),
+      'type' => 'array',
+      'total' => $query->max_num_pages,
+      'format' => '?paged=%#%',
+      'mid_size' => 2,
+      'end_size' => 1,
+      'current' => max( 1, get_query_var('paged') ),
+      'prev_text' => ungrynerd_svg('icon-left'),
+      'next_text' => ungrynerd_svg('icon-right'),
+      'add_args' => array($args)
+      )
+    );
+
+    if ($query->max_num_pages > 1) : ?>
+      <ul class="pagination">
+      <?php foreach ( $paginate as $page ) {
+        echo '<li>' . $page . '</li>';
+      } ?>
+    </ul>
+    <?php endif;
+  }

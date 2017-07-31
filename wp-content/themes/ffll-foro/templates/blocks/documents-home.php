@@ -6,7 +6,7 @@
     <div class="container">
       <div class="title-wrapper">
         <h2 class="section-title">Documentos. <?= Extras\ungrynerd_svg('icon-folder'); ?></h2>
-        <a href="" class="button">Ver más documentos</a>
+        <a href="<?= get_post_type_archive_link('un_doc'); ?>" class="button">Ver más documentos</a>
       </div>
       <div class="doc-list">
         <?php while ($docs->have_posts()) : $docs->the_post(); ?>
