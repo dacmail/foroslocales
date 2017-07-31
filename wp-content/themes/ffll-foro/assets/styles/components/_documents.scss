@@ -1,3 +1,29 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  align-items: center;
+  &__form {
+    display: flex;
+    .styled-select {
+      width: auto;
+      margin-right: 15px;
+      margin-bottom: 0px;
+      padding-right: 40px;
+    }
+  }
+  &__by {
+    font-weight: 300;
+    line-height: 24px;
+    text-align: right;
+    font-size: 24px;
+    padding-right: 44px;
+    margin-right: 20px;
+    background: url('../images/icon-filter.svg') no-repeat right center;
+    background-size: 24px;
+  }
+}
+
 .doc-list {
   &__document {
     display: flex;
