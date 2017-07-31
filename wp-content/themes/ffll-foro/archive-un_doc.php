@@ -7,9 +7,9 @@
       <h2 class="section-title">Documentos. <?= Extras\ungrynerd_svg('icon-folder'); ?></h2>
       <?php get_template_part('templates/components/filters', 'documents') ?>
       <?php if ($docs->have_posts()): ?>
-        <div class="doc-list">
+        <div class="doc-list doc-list--extend">
           <?php while ($docs->have_posts()) : $docs->the_post(); ?>
-            <?php get_template_part('templates/components/document', 'list') ?>
+            <?php get_template_part('templates/components/document-extend', 'list') ?>
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>
         </div>
