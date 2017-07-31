@@ -158,3 +158,13 @@ function ungrynerd_filter_documents($query) {
   }
 }
 add_filter('pre_get_posts', __NAMESPACE__ . '\ungrynerd_filter_documents');
+
+
+function ungrynerd_doc_icon($extension = '') {
+  $icon = 'icon-download';
+  $preview_formats = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
+  if (in_array($extension, $preview_formats)) {
+    $icon = 'icon-preview';
+  }
+  return ungrynerd_svg($icon);
+}

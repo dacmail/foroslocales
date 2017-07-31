@@ -13,6 +13,6 @@
     <?php the_terms(get_the_ID(), 'un_archive'); ?>
   </div>
   <a target="_blank" href="<?= $file; ?>" class="doc-list__document__link" >
-    <?= Extras\ungrynerd_svg('icon-download'); ?>
+    <?= Extras\ungrynerd_doc_icon($ext); ?>
   </a>
 </div>
