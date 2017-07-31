@@ -29,10 +29,11 @@
           $('.search-wrapper').removeClass('open');
         });
         $(window).scroll(function() {
-          if ($(window).scrollTop()>200)
+          if ($(window).scrollTop()>200) {
             $('.nav-primary .blog-name').addClass('visible');
-          else
+          } else {
             $('.nav-primary .blog-name').removeClass('visible');
+          }
         });
       },
       finalize: function() {
@@ -48,12 +49,16 @@
         // JavaScript to be fired on the home page, after the init JS
       }
     },
-    // About us page, note the change from about-us to about_us.
-    'about_us': {
+    // Documentos
+    'post_type_archive_un_doc': {
       init: function() {
-        // JavaScript to be fired on the about us page
+        $('.filters__form select').on('change', function(event) {
+          event.preventDefault();
+          $('.filters__form').submit();
+        });
       }
-    }
+    },
+
   };
 
   // The routing fires all common scripts, followed by the page specific scripts.

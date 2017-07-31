@@ -94,6 +94,17 @@ function ungrynerd_doc_taxonomies() {
         )
     );
 
+    register_taxonomy("un_doc_type",
+    array("un_doc"),
+    array(
+        "hierarchical" => true,
+        "label" => esc_html__( "Tipos", 'ungrynerd'),
+        "singular_label" => esc_html__( "Tipo", 'ungrynerd'),
+        "rewrite" => array( 'slug' => 'tipo', 'hierarchical' => true),
+        'show_in_nav_menus' => false,
+        )
+    );
+
     register_taxonomy("un_global",
     array("un_doc", "post", "event"),
     array(
@@ -113,3 +124,37 @@ function ungrynerd_form_tag($scanned_tag) {
   return $scanned_tag;
 }
 add_filter('wpcf7_form_tag', __NAMESPACE__ . '\ungrynerd_form_tag',10,1);
+
+
+function ungryner_add_query_vars( $vars ){
+  $vars[] = "por";
+  $vars[] = "tipo";
+  return $vars;
+}
+add_filter( 'query_vars', __NAMESPACE__ . '\ungryner_add_query_vars' );
+
+
+function ungrynerd_filter_documents($query) {
+  if (is_post_type_archive('un_doc')) {
+    if (get_query_var('por') && get_query_var('tipo')) {
+      $tax_query['relation'] = 'AND';
+    }
+    if (get_query_var('por')) {
+        $tax_query[] = array(
+                        'taxonomy' => 'un_archive',
+                        'field'    => 'slug',
+                        'terms'    => get_query_var('por'),
+                      );
+    }
+
+    if (get_query_var('tipo')) {
+        $tax_query[] =  array(
+                          'taxonomy' => 'un_doc_type',
+                          'field'    => 'slug',
+                          'terms'    => get_query_var('tipo'),
+                        );
+    }
+    $query->set('tax_query', $tax_query);
+  }
+}
+add_filter('pre_get_posts', __NAMESPACE__ . '\ungrynerd_filter_documents');
