@@ -72,10 +72,10 @@ function ugnrynerd_doc_post_type()  {
     'capability_type' => 'post',
     'show_in_nav_menus' => false,
     'hierarchical' => false,
-    'exclude_from_search' => true,
+    'exclude_from_search' => false,
     'menu_position' => 5,
     'rewrite' => array( 'slug' => 'documentos' ),
-    'taxonomies' => array('un_archive'),
+    'taxonomies' => array('un_archive', 'un_doc_type', 'un_global'),
     'has_archive' => true,
     'supports' => array('title')
   );
@@ -89,7 +89,7 @@ function ungrynerd_doc_taxonomies() {
         "hierarchical" => true,
         "label" => esc_html__( "Categorización", 'ungrynerd'),
         "singular_label" => esc_html__( "Categoría", 'ungrynerd'),
-        "rewrite" => array( 'slug' => 'archivo', 'hierarchical' => true),
+        "rewrite" => array( 'slug' => 'archivado', 'hierarchical' => true),
         'show_in_nav_menus' => false,
         )
     );
@@ -135,7 +135,7 @@ add_filter( 'query_vars', __NAMESPACE__ . '\ungryner_add_query_vars' );
 
 
 function ungrynerd_filter_documents($query) {
-  if (is_post_type_archive('un_doc')) {
+  if (is_post_type_archive('un_doc') && $query->is_main_query()) {
     if (get_query_var('por') && get_query_var('tipo')) {
       $tax_query['relation'] = 'AND';
     }
@@ -155,7 +155,9 @@ function ungrynerd_filter_documents($query) {
                         );
     }
     $query->set('page', get_query_var('paged'));
-    $query->set('tax_query', $tax_query);
+    if (!empty($tax_query)) {
+      $query->set('tax_query', $tax_query);
+    }
   }
 }
 add_filter('pre_get_posts', __NAMESPACE__ . '\ungrynerd_filter_documents');
@@ -175,6 +177,7 @@ function ungrynerd_pagination($query=null) {
     global $wp_query;
     $query = $query ? $query : $wp_query;
     $big = 999999999;
+    $args = array();
     if (get_query_var('por')) {
       $args['por'] = get_query_var('por');
     }
@@ -201,5 +204,8 @@ function ungrynerd_pagination($query=null) {
         echo '<li>' . $page . '</li>';
       } ?>
     </ul>
+    <style type="text/css">
+      .pagination li .page-numbers.current { background-color: #<?php header_textcolor(); ?>;  }
+    </style>
     <?php endif;
   }

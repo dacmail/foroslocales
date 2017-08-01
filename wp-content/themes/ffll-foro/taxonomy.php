@@ -2,8 +2,12 @@
 
 <section class="documents">
   <div class="container">
-    <h2 class="section-title">Documentos. <?= Extras\ungrynerd_svg('icon-folder'); ?></h2>
-    <?php get_template_part('templates/components/filters', 'documents') ?>
+    <h2 class="section-title">documentos. <?= Extras\ungrynerd_svg('icon-folder'); ?></h2>
+    <div class="filters justify-content-end">
+      <div class="filters__by">
+        <?php single_term_title() ?>
+      </div>
+    </div>
     <?php if (have_posts()): ?>
       <div class="doc-list doc-list--extend">
         <?php while (have_posts()) : the_post(); ?>
