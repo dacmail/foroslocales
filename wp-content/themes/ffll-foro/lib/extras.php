@@ -29,7 +29,7 @@ add_filter('body_class', __NAMESPACE__ . '\\body_class');
  * Clean up the_excerpt()
  */
 function excerpt_more() {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
+  return '...';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
@@ -135,6 +135,13 @@ add_filter( 'query_vars', __NAMESPACE__ . '\ungryner_add_query_vars' );
 
 
 function ungrynerd_filter_documents($query) {
+
+  //Limita el número de posts en portada
+  if (is_front_page() && $query->is_main_query()) {
+    $query->set('posts_per_page', 3);
+  }
+
+  // Filtra por tipo y categorización de documentos
   if (is_post_type_archive('un_doc') && $query->is_main_query()) {
     if (get_query_var('por') && get_query_var('tipo')) {
       $tax_query['relation'] = 'AND';
@@ -159,6 +166,8 @@ function ungrynerd_filter_documents($query) {
       $query->set('tax_query', $tax_query);
     }
   }
+
+
 }
 add_filter('pre_get_posts', __NAMESPACE__ . '\ungrynerd_filter_documents');
 
