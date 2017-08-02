@@ -1,6 +1,8 @@
 <?php use Roots\Sage\Extras; ?>
 
-<?php $docs = new \WP_Query(array('post_type' => 'un_doc')); ?>
+<?php $docs = new \WP_Query(array(
+                      'post_type' => 'un_doc',
+                      'posts_per_page' => 5)); ?>
 <?php if ($docs->have_posts()): ?>
   <section class="documents-home">
     <div class="container">

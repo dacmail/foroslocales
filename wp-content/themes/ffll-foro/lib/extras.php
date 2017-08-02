@@ -136,11 +136,6 @@ add_filter( 'query_vars', __NAMESPACE__ . '\ungryner_add_query_vars' );
 
 function ungrynerd_filter_documents($query) {
 
-  //Limita el número de posts en portada
-  if (is_front_page() && $query->is_main_query()) {
-    $query->set('posts_per_page', 3);
-  }
-
   // Filtra por tipo y categorización de documentos
   if (is_post_type_archive('un_doc') && $query->is_main_query()) {
     if (get_query_var('por') && get_query_var('tipo')) {
