@@ -9,8 +9,96 @@
       color: $black;
     }
   }
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid $black;
+    padding-bottom: 34px;
+    margin-bottom: 39px;
+  }
+  &__author {
+    @extend .events-list__event__date;
+    margin: 0px;
+    margin-right: auto;
+    margin-left: 30px;
+    background-image: url(../images/icon-author.svg);
+    background-size: 15px;
+    a {
+      color: $black;
+    }
+  }
+  &__share {
+    background: url('../images/icon-share.svg') no-repeat right top;
+    line-height: 18px;
+    background-size: 14px;
+    padding-right: 20px;
+    font-weight: bold;
+    text-align: right;
+    text-transform: lowercase;
+    cursor: pointer;
+    position: relative;
+    ul {
+      top: 100%;
+      left: -15px;
+      position: absolute;
+      text-align: left;
+      padding: 15px;
+      margin: 0px;
+      list-style: none;
+      background: $white;
+      display: none;
+      li {
+        margin-bottom: 5px;
+        a {
+          color: $black;
+        }
+      }
+    }
+    &:hover {
+      ul {
+        display: block;
+      }
+    }
+  }
   &__date {
     @extend .events-list__event__date;
+  }
+  &__thumb {
+    margin-bottom: 39px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    &__caption {
+      display: block;
+      margin: 0px;
+      padding: 20px 0px 20px 00px;
+      border-bottom: 2px solid $black;
+      svg {
+        position: relative;
+        top: 1px;
+        margin-right: 5px;
+      }
+    }
+  }
+  &__content {
+    font-size: 18px;
+    line-height: 1.78;
+    padding: 0px 80px;
+    margin-bottom: 70px;
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    blockquote {
+      background-color: $light;
+      padding: 40px 80px 20px 80px;
+      margin: 40px -80px;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.33;
+    }
   }
   &__tags {
     font-size: 16px;
@@ -40,7 +128,14 @@
       }
     }
   }
-
+  //SINGLE POST
+  &--single {
+    .post {
+      &__title {
+        margin-bottom: 40px;
+      }
+    }
+  }
   //POSTS LISTING (INDEX, SEARCH, ARCHIVE, ...)
   &--listing {
     margin-bottom: 45px;

@@ -1,2 +1,13 @@
-<time class="updated" datetime="<?= get_post_time('c', true); ?>"><?= get_the_date(); ?></time>
-<p class="byline author vcard"><?= __('By', 'sage'); ?> <a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author" class="fn"><?= get_the_author(); ?></a></p>
+<div class="post__meta">
+  <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
+  <p class="post__author"><a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author"><?= get_the_author(); ?></a></p>
+  <div class="post__share">
+    Compartir
+    <ul>
+      <li><a href="#" target="_blank">Twitter</a></li>
+      <li><a href="#" target="_blank">Facebook</a></li>
+      <li><a href="#" target="_blank">Email</a></li>
+      <li><a href="#" target="_blank">WhatsApp</a></li>
+    </ul>
+  </div>
+</div>

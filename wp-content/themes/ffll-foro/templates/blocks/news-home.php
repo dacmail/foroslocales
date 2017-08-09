@@ -16,7 +16,7 @@
               <h2 class="post__title">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </h2>
-              <p class="post__date"><?php the_time(get_option('date_format')); ?></p>
+              <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
               <?php the_excerpt(); ?>
               <div class="post__tags">
                 <?= Extras\ungrynerd_svg('icon-tag'); ?>
