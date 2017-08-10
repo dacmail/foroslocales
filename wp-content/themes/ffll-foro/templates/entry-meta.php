@@ -1,5 +1,7 @@
 <div class="post__meta">
-  <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
+  <?php if (get_post_type()!=='event'): ?>
+      <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
+  <?php endif ?>
   <p class="post__author"><a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>" rel="author"><?= get_the_author(); ?></a></p>
   <div class="post__share">
     Compartir

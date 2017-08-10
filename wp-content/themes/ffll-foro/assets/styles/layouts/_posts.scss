@@ -27,6 +27,13 @@
       color: $black;
     }
   }
+  &__location {
+    @extend .events-list__event__date;
+    background-image: url(../images/icon-location.svg);
+    padding-bottom: 20px;
+    border-bottom: 2px solid $black;
+    margin-bottom: 40px;
+  }
   &__share {
     background: url('../images/icon-share.svg') no-repeat right top;
     line-height: 18px;
@@ -62,6 +69,10 @@
   }
   &__date {
     @extend .events-list__event__date;
+    &--time {
+      background-image: url(../images/icon-clock.svg);
+      background-size: 15px;
+    }
   }
   &__thumb {
     margin-bottom: 39px;
@@ -111,6 +122,10 @@
     a {
       color: $black;
     }
+    svg {
+      position: relative;
+      top: 2px;
+    }
   }
 
   //HOMEPAGE POSTS
@@ -136,6 +151,37 @@
       }
     }
   }
+
+  //SINGLE EVENT
+  &--event {
+    .em-location-map-container {
+      margin-bottom: 20px;
+    }
+    .post {
+      &__title {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+      &__author {
+        margin-left: 0px;
+      }
+      &__date {
+        display: block;
+        border-bottom: 2px solid $black;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        &--time {
+          display: block;
+        }
+      }
+      &__content {
+        padding: 0px;
+      }
+
+    }
+  }
+
+
   //POSTS LISTING (INDEX, SEARCH, ARCHIVE, ...)
   &--listing {
     margin-bottom: 45px;
@@ -156,6 +202,7 @@
         padding-bottom: 18px;
         border-top: 0px;
         border-bottom: 2px solid $black;
+
       }
     }
   }
