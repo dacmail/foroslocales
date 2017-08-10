@@ -213,3 +213,13 @@ function ungrynerd_pagination($query=null) {
     </style>
     <?php endif;
   }
+
+
+function rc_add_cpts_to_search($query) {
+  // Check to verify it's search page
+  if( is_search() ) {
+    $query->set('post_type', array('post', 'event', 'un_doc') );
+  }
+  return $query;
+}
+add_action( 'pre_get_posts', __NAMESPACE__ . '\rc_add_cpts_to_search' );

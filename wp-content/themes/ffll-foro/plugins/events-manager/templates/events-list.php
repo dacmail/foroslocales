@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Extras; ?>
+
 <?php
 /*
  * Default Events List Template
@@ -9,9 +11,28 @@
  *
  */
 $args = apply_filters('em_content_events_args', $args);
+var_dump($args);
 
-if( get_option('dbem_css_evlist') ) echo "<div class='events-list'>";
+if (is_page_template('page-events.php')) {
+  $events = EM_Events::get($args);
+  foreach( $events as $EM_Event ) { ?>
+    <article class="post post--listing">
+      <h2 class="post__title">
+        <?php echo $EM_Event->output("#_EVENTLINK"); ?>
+      </h2>
+      <p class="post__date"><?php echo $EM_Event->output("#_EVENTDATES"); ?></p>
+      <?php echo $EM_Event->output("#_EVENTEXCERPT"); ?>
+      <div class="post__tags">
+        <?= Extras\ungrynerd_svg('icon-tag'); ?>
+        <?php echo $EM_Event->output("#_EVENTTAGS"); ?>
+      </div>
+    </article>
+    <?php echo EM_Events::get_pagination_links($args, EM_Events::count()); ?>
+  <?php }
+} else {
+  if( get_option('dbem_css_evlist') ) echo "<div class='events-list'>";
 
-echo EM_Events::output( $args );
+  echo EM_Events::output( $args );
 
-if( get_option('dbem_css_evlist') ) echo "</div>";
+  if( get_option('dbem_css_evlist') ) echo "</div>";
+}
