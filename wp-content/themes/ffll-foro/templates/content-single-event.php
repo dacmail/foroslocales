@@ -15,19 +15,21 @@
             <div class="post__content">
               <?= do_shortcode('[event]#_EVENTNOTES[/event]') ?>
             </div>
+            <?php if (has_term('', 'event-tags')) : ?>
             <div class="post__tags">
               <?= Extras\ungrynerd_svg('icon-tag'); ?>
               <?= do_shortcode('[event]#_EVENTTAGS[/event]') ?>
             </div>
+            <?php endif; ?>
           </article>
         </div>
         <div class="col-md-4">
           <aside class="post post--event">
             <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
             <time class="post__date post__date--time"><?php the_time('H:i'); ?></time>
-            <?= do_shortcode('[event]#_LOCATIONMAP[/event]') ?>
-            <p class="post__location"><?= do_shortcode('[event]#_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONPOSTCODE, #_LOCATIONTOWN)[/event]') ?></p>
-            <a class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añadir a Google Calendar</a>
+            <?= do_shortcode('[event]{has_location}#_LOCATIONMAP{/has_location}[/event]') ?>
+            <?= do_shortcode('[event]{has_location}<p class="post__location">#_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONPOSTCODE, #_LOCATIONTOWN){/has_location}[/event]</p>') ?>
+            <a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añadir a Google Calendar</a>
           </aside>
         </div>
       </div>
