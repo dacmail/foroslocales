@@ -15,3 +15,6 @@
     </div>
   </div>
 </section>
+<style type="text/css">
+  .page-numbers.current { background-color: #<?php header_textcolor(); ?>;  }
+</style>

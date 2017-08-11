@@ -11,7 +11,11 @@
  *
  */
 $args = apply_filters('em_content_events_args', $args);
-var_dump($args);
+
+$page_queryvar = !empty($args['page_queryvar']) ? $args['page_queryvar'] : 'pno';
+if( !empty($args['pagination']) && !array_key_exists('page',$args) && !empty($_REQUEST[$page_queryvar]) && is_numeric($_REQUEST[$page_queryvar]) ){
+  $page = $args['page'] = $_REQUEST[$page_queryvar];
+}
 
 if (is_page_template('page-events.php')) {
   $events = EM_Events::get($args);
