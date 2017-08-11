@@ -1,0 +1,77 @@
+.title-search {
+  margin-bottom: 60px;
+  font-size: 18px;
+  font-style: oblique;
+  line-height: 1.33;
+  color: $black;
+  svg {
+    position: relative;
+    margin-right: 15px;
+    top: 5px;
+  }
+  strong {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.0;
+  }
+}
+.results {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  &__format {
+    @extend .doc-list__document__format;
+    &--news {
+      background-color: $black;
+      svg {
+        path {
+          fill: $white;
+        }
+      }
+    }
+  }
+  &__data {
+    flex: 1 1 auto;
+    border-top: solid 2px $black;
+    padding-top: 18px;
+    margin: 0px 20px;
+  }
+  &__title {
+    font-size: 18px;
+    margin-bottom: 18px;
+    font-weight: bold;
+    line-height: 1.33;
+    color: $black;
+    a {
+      color: $black;
+    }
+  }
+  &__meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    div {
+      font-size: 16px;
+      font-weight: bold;
+      color: $black;
+      margin-right: 20px;
+      a {
+        color: $black;
+      }
+    }
+  }
+  &__link {
+    background-color: rgba($black, 0.1);
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 0 0 60px;
+    &--empty {
+      background-color: transparent;
+    }
+  }
+}

@@ -2,26 +2,16 @@
 
 <section class="posts-list">
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h2 class="section-title">Noticias. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
-      </div>
-      <div class="col-md-8">
-        <?php while (have_posts()) : the_post(); ?>
-          <article class="post post--listing">
-            <h2 class="post__title">
-              <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-            </h2>
-            <p class="post__date"><?php the_time(get_option('date_format')); ?></p>
-            <?php the_excerpt(); ?>
-            <div class="post__tags">
-              <?= Extras\ungrynerd_svg('icon-tag'); ?>
-              <?php the_tags('', ', '); ?>
-            </div>
-          </article>
-        <?php endwhile; ?>
-        <?= Extras\ungrynerd_pagination(); ?>
-      </div>
-    </div>
+    <h1 class="title-search"><?= Extras\ungrynerd_svg('icon-search'); ?>Resultados de búsqueda de <strong>'<?php the_search_query(); ?>'</strong></h1>
+    <?php if (have_posts()): ?>
+      <?php while (have_posts()) : the_post(); ?>
+        <article class="results">
+          <?php get_template_part('templates/components/results', get_post_type()) ?>
+        </article>
+      <?php endwhile; ?>
+      <?= Extras\ungrynerd_pagination(); ?>
+    <?php else: ?>
+      <h2>No hay resultados para tu búsqueda</h2>
+    <?php endif ?>
   </div>
 </section>

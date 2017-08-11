@@ -135,6 +135,10 @@ add_filter( 'query_vars', __NAMESPACE__ . '\ungryner_add_query_vars' );
 
 
 function ungrynerd_filter_documents($query) {
+  // Si es búsqueda añaade todos los tipos de posts a la query
+  if (is_search() && $query->is_main_query()) {
+    $query->set('post_type', array('post', 'event', 'un_doc'));
+  }
 
   // Filtra por tipo y categorización de documentos
   if (is_post_type_archive('un_doc') && $query->is_main_query()) {
@@ -214,12 +218,3 @@ function ungrynerd_pagination($query=null) {
     <?php endif;
   }
 
-
-function rc_add_cpts_to_search($query) {
-  // Check to verify it's search page
-  if( is_search() ) {
-    $query->set('post_type', array('post', 'event', 'un_doc') );
-  }
-  return $query;
-}
-add_action( 'pre_get_posts', __NAMESPACE__ . '\rc_add_cpts_to_search' );
