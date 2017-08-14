@@ -4,5 +4,8 @@
   &__item {
     margin-bottom: 5px;
     list-style: none;
+    a {
+      color: $black;
+    }
   }
 }
