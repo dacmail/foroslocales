@@ -46,7 +46,7 @@ function ungrynerd_svg($svg) {
   return $output;
 }
 
-/* ARTICLES POST TYPE */
+/* DOCUMENTS POST TYPE */
 add_action('init',  __NAMESPACE__ . '\ugnrynerd_doc_post_type');
 function ugnrynerd_doc_post_type()  {
   $labels = array(
@@ -118,6 +118,44 @@ function ungrynerd_doc_taxonomies() {
 }
 add_action( 'init', __NAMESPACE__ . '\ungrynerd_doc_taxonomies', 0);
 
+/* ENTIDADES POST TYPE */
+add_action('init',  __NAMESPACE__ . '\ugnrynerd_entidades_post_type');
+function ugnrynerd_entidades_post_type()  {
+  $labels = array(
+    'name' => __('Entidades', 'ungrynerd'),
+    'singular_name' => __('Entidad', 'ungrynerd'),
+    'add_new' => __('Añadir entidad', 'ungrynerd'),
+    'add_new_item' => __('Añadir entidad', 'ungrynerd'),
+    'edit_item' => __('Editar entidad', 'ungrynerd'),
+    'new_item' => __('Nuevo entidad', 'ungrynerd'),
+    'view_item' => __('Ver Entidades', 'ungrynerd'),
+    'search_items' => __('Buscar Entidades', 'ungrynerd'),
+    'not_found' =>  __('No se han encontrado Entidades ', 'ungrynerd'),
+    'not_found_in_trash' => __('No hay Entidades en la papelera', 'ungrynerd'),
+    'parent_item_colon' => ''
+  );
+
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true,
+    'query_var' => true,
+    'capability_type' => 'post',
+    'show_in_nav_menus' => false,
+    'hierarchical' => false,
+    'exclude_from_search' => true,
+    'menu_position' => 5,
+    'rewrite' => array( 'slug' => 'entidades' ),
+    'taxonomies' => array('un_global'),
+    'has_archive' => true,
+    'supports' => array('title')
+  );
+  register_post_type('un_entidad',$args);
+}
+
+
+/* FORM MAILS PIPES */
 function ungrynerd_form_tag($scanned_tag) {
   $pipes = new \WPCF7_Pipes( $scanned_tag['raw_values'] );
   $scanned_tag['values'] = $pipes->collect_afters();
