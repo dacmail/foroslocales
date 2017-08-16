@@ -47,15 +47,43 @@
     display: block;
     opacity: 0;
     transition: opacity .3s linear;
+    @include media-breakpoint-down(md) {
+      line-height: 60px;
+      opacity: 1;
+    }
     &.visible {
       opacity: 1;
     }
   }
+  .navbar-toggler-right {
+    @include media-breakpoint-down(md) {
+      right: 0px;
+      padding: 0px;
+      border: 0px;
+      height: 60px;
+      font-size: 30px;
+      &:focus {
+        outline: 0;
+      }
+    }
+    .navbar-toggler-icon {
+      @include media-breakpoint-down(md) {
+        color: $white;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
   .navbar {
     padding: 0px;
     height: 60px;
     .navbar-collapse {
       height: 100%;
+      @include media-breakpoint-down(md) {
+        height: auto;
+        position: relative;
+      }
     }
   }
   .navbar-nav {
@@ -63,11 +91,19 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @include media-breakpoint-down(md) {
+      height: auto;
+      background-color: $black;
+      padding: 15px 0px;
+    }
     .menu-item {
       font-weight: bold;
       color: $white;
       margin-left: 30px;
       text-transform: lowercase;
+      @include media-breakpoint-down(md) {
+        margin-bottom: 10px;
+      }
       a {
         color: $white;
         &:after {
@@ -96,6 +132,11 @@
     align-items: center;
     background: $black url('../images/icon-search.svg') left center no-repeat;
     transition: width .2s ease-in;
+    @include media-breakpoint-down(md) {
+      right: 5%;
+      bottom: 0px;
+      height: 57px;
+    }
     .search-form {
       display: flex;
       flex: 1 0 auto;
@@ -114,6 +155,9 @@
     }
     &.open {
       width: 50%;
+      @include media-breakpoint-down(md) {
+        width: 90%;
+      }
     }
   }
 }

@@ -40,6 +40,10 @@
       font-size: 24px;
       font-weight: bold;
       padding: 10px;
+      @include media-breakpoint-down(md) {
+        font-size: 16px;
+        height: 40px;
+      }
       &:after {
         content: ".";
         margin-left: -5px;
@@ -64,6 +68,9 @@
             width: 10px;
             height: 10px;
             background-color: $pink;
+            @include media-breakpoint-down(md) {
+              top: 5px;
+            }
           }
         }
         &:after {
@@ -99,6 +106,9 @@
           font-size: 48px;
           font-weight: bold;
           line-height: 0.83;
+          @include media-breakpoint-down(md) {
+            font-size: 30px;
+          }
         }
         &:after {
           display: none;
