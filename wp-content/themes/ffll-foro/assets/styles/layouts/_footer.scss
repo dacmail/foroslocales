@@ -11,6 +11,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 75px;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
     .blog-name {
       color: $black;
       font-weight: bold;
@@ -40,4 +43,7 @@
   width: 100%;
   background: url('../images/bg-footer.jpg') no-repeat center center;
   background-size: 100% auto;
+  @include media-breakpoint-down(sm) {
+    cover;
+  }
 }

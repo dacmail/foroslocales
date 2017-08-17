@@ -11,6 +11,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    @include media-breakpoint-down(sm) {
+      flex-flow: column;
+      margin-bottom: 30px;
+    }
   }
 }
 
@@ -20,6 +24,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    @include media-breakpoint-down(sm) {
+      flex-flow: column;
+      margin-bottom: 30px;
+    }
   }
 }
 
