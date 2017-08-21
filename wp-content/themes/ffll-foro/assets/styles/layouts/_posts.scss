@@ -100,6 +100,9 @@
     line-height: 1.78;
     padding: 0px 80px;
     margin-bottom: 70px;
+    @include media-breakpoint-down(sm) {
+      padding: 0px;
+    }
     h2 {
       font-size: 24px;
       font-weight: bold;
@@ -112,6 +115,11 @@
       font-size: 24px;
       font-weight: 300;
       line-height: 1.33;
+      @include media-breakpoint-down(sm) {
+        margin: 40px -15px;
+        padding: 40px 15px;
+        font-size: 22px;
+      }
     }
   }
   &__tags {
@@ -161,12 +169,44 @@
     .post {
       &__title {
         margin-bottom: 40px;
+        @include media-breakpoint-down(sm) {
+          font-size: 26px;
+          margin-bottom: 20px;
+        }
+      }
+      &__meta {
+        @include media-breakpoint-down(sm) {
+          flex-flow: column;
+          alin-items: flex-start;
+        }
+      }
+      &__date {
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 10px;
+        }
+      }
+      &__author {
+        @include media-breakpoint-down(sm) {
+          margin-left: 0px;
+          margin-bottom: 10px;
+        }
+      }
+      &__share {
+        @include media-breakpoint-down(sm) {
+          text-align: left;
+          background-position: left center;
+          padding-left: 20px;
+          padding-right: 0px;
+        }
       }
     }
   }
 
   //SINGLE EVENT
   &--event {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 30px;
+    }
     .em-location-map-container {
       margin-bottom: 20px;
     }
@@ -174,6 +214,9 @@
       &__title {
         font-size: 32px;
         margin-bottom: 40px;
+        @include media-breakpoint-down(sm) {
+          font-size: 26px;
+        }
       }
       &__author {
         margin-left: 0px;

@@ -44,6 +44,6 @@
   background: url('../images/bg-footer.jpg') no-repeat center center;
   background-size: 100% auto;
   @include media-breakpoint-down(sm) {
-    cover;
+    background-size: cover;
   }
 }
