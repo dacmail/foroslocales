@@ -10,7 +10,7 @@
       <div class="col-sm-6">
         <?php em_calendar(array('format_header' => '')); ?>
         <div class="button-wrapper">
-          <a href="" class="button">Ver calendario completo</a>
+          <a href="<?= get_post_type_archive_link('event') ?>" class="button">Ver calendario completo</a>
         </div>
       </div>
     </div>
