@@ -256,3 +256,26 @@ function ungrynerd_pagination($query=null) {
     <?php endif;
   }
 
+function ungrynerd_og_schema( $output ) {
+  return $output . ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"';
+}
+add_filter('language_attributes', __NAMESPACE__ . '\ungrynerd_og_schema');
+
+function ugnrynerd_og_tags() {
+    global $post;
+    if (is_singular()) {
+      echo '<meta property="og:title" content="' . get_the_title() . '"/>';
+      echo '<meta property="og:type" content="article"/>';
+      echo '<meta property="og:url" content="' . get_permalink() . '"/>';
+    }
+
+    echo '<meta property="og:site_name" content="' . get_bloginfo('name') . '"/>';
+
+    if (!has_post_thumbnail($post->ID)) {
+        echo '<meta property="og:image" content="' . get_header_image() . '"/>';
+    } else {
+        $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+        echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '"/>';
+    }
+}
+add_action( 'wp_head', __NAMESPACE__ . '\ugnrynerd_og_tags', 5 );
