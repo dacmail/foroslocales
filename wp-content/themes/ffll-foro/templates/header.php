@@ -34,12 +34,12 @@
 </nav>
 <header class="header" style="background-color: #<?php header_textcolor(); ?>;">
   <div class="container" style="background-image:url(<?php header_image(); ?>);">
-    <?php if (has_custom_logo()): ?>
-      <?php the_custom_logo(); ?>
-    <?php else: ?>
-      <a class="header__site-name" href="<?= esc_url(home_url('/')); ?>">
-        <?php bloginfo('name'); ?>
-      </a>
-    <?php endif ?>
+      <?php if (has_custom_logo()): ?>
+        <?php the_custom_logo(); ?>
+      <?php else: ?>
+        <a class="header__site-name" href="<?= esc_url(home_url('/')); ?>">
+          <?php bloginfo('name'); ?>
+        </a>
+      <?php endif ?>
   </div>
 </header>

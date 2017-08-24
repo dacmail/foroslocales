@@ -8,6 +8,7 @@
         'show_option_all' => esc_html__('Todos los organismos', 'ungrynerd'),
         'taxonomy' => 'un_archive',
         'name' => 'por',
+        'hide_empty' => false,
         'selected' => get_query_var('por')
       )); ?>
     </div>
@@ -17,6 +18,7 @@
         'show_option_all' => esc_html__('Todos los tipos', 'ungrynerd'),
         'taxonomy' => 'un_doc_type',
         'name' => 'tipo',
+        'hide_empty' => false,
         'selected' => get_query_var('tipo')
       )); ?>
     </div>
