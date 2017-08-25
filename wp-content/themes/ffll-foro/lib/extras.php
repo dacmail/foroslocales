@@ -180,6 +180,8 @@ function ungrynerd_filter_documents($query) {
 
   if (is_post_type_archive('un_entidad') && $query->is_main_query()) {
     $query->set('posts_per_page', -1);
+    $query->set('orderby', 'post_title');
+    $query->set('order', 'ASC');
   }
 
 

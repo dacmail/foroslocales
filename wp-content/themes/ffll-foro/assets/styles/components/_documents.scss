@@ -163,7 +163,9 @@
       }
       &__archive {}
       &__type {}
-      &__date {}
+      &__date {
+        line-height: 1.5;
+      }
     }
   }
 }
