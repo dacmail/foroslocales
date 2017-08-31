@@ -144,7 +144,7 @@ function ugnrynerd_entidades_post_type()  {
     'capability_type' => 'post',
     'show_in_nav_menus' => false,
     'hierarchical' => false,
-    'exclude_from_search' => true,
+    'exclude_from_search' => false,
     'menu_position' => 5,
     'rewrite' => array( 'slug' => 'entidades' ),
     'taxonomies' => array('un_global'),
@@ -286,3 +286,13 @@ function ugnrynerd_og_tags() {
   }
 }
 add_action( 'wp_head', __NAMESPACE__ . '\ugnrynerd_og_tags', 5 );
+
+
+function my_swt_post_type_filter( $allowed ) {
+  $allowed['un_entidad'] = true;
+  $allowed['event'] = true;
+  $allowed['un_doc'] = true;
+  return $allowed;
+}
+
+add_filter( 'sitewide_tags_allowed_post_types', __NAMESPACE__ . '\my_swt_post_type_filter' );

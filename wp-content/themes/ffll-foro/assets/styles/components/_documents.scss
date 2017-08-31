@@ -72,6 +72,7 @@
     }
     &__name {
       padding-left: 20px;
+      padding-right: 50px;
       flex: 1 1 40%;
       @include media-breakpoint-down(sm) {
         flex: 0 0 100%;
@@ -107,6 +108,9 @@
       font-weight: bold;
       line-height: 18px;
       flex: 1 1 20%;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 15px;
+      }
       svg {
         position: relative;
         margin-right: 3px;
@@ -123,9 +127,11 @@
       flex: 0 0 60px;
       @include media-breakpoint-down(sm) {
         width: 100%;
-        flex: 0 0 100%;
+        flex: 1 1 100%;
         padding: 0px;
         text-align: center;
+        display: block;
+        line-height: 60px;
       }
     }
   }
@@ -138,7 +144,7 @@
         padding-top: 18px;
         margin: 0px 20px;
         line-height: 1.5;
-        flex: 1 0 auto;
+        flex: 0 1 auto;
       }
       &__title {
         font-size: 18px;
