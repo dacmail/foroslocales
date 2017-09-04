@@ -109,8 +109,8 @@ function ungrynerd_doc_taxonomies() {
     array("un_doc", "post", "event"),
     array(
         "hierarchical" => true,
-        "label" => esc_html__( "Tag globales", 'ungrynerd'),
-        "singular_label" => esc_html__( "Etiqueta global", 'ungrynerd'),
+        "label" => esc_html__( "Claves", 'ungrynerd'),
+        "singular_label" => esc_html__( "Clave", 'ungrynerd'),
         "rewrite" => array( 'slug' => 'gtag', 'hierarchical' => false),
         'show_in_nav_menus' => false,
         )
