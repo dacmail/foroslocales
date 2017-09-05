@@ -21,7 +21,7 @@
                 <?php the_excerpt(); ?>
                 <div class="post__tags">
                   <?= Extras\ungrynerd_svg('icon-tag'); ?>
-                  <?php the_tags('', ', '); ?>
+                  <?php the_terms(get_the_ID(), 'un_global', '', ', '); ?>
                 </div>
               </article>
             </div>

@@ -111,7 +111,7 @@ function ungrynerd_doc_taxonomies() {
         "hierarchical" => true,
         "label" => esc_html__( "Claves", 'ungrynerd'),
         "singular_label" => esc_html__( "Clave", 'ungrynerd'),
-        "rewrite" => array( 'slug' => 'gtag', 'hierarchical' => false),
+        "rewrite" => array( 'slug' => 'clave', 'hierarchical' => false),
         'show_in_nav_menus' => false,
         )
     );
@@ -288,11 +288,12 @@ function ugnrynerd_og_tags() {
 add_action( 'wp_head', __NAMESPACE__ . '\ugnrynerd_og_tags', 5 );
 
 
-function my_swt_post_type_filter( $allowed ) {
-  $allowed['un_entidad'] = true;
-  $allowed['event'] = true;
-  $allowed['un_doc'] = true;
-  return $allowed;
-}
 
-add_filter( 'sitewide_tags_allowed_post_types', __NAMESPACE__ . '\my_swt_post_type_filter' );
+
+function ungrynerd_unregister_taxs() {
+  unregister_taxonomy_for_object_type( 'post_tag', 'post' );
+  unregister_taxonomy_for_object_type( 'category', 'post' );
+  unregister_taxonomy_for_object_type( 'event-tags', 'event' );
+  unregister_taxonomy_for_object_type( 'event-categories', 'event' );
+}
+add_action( 'init', __NAMESPACE__ . '\ungrynerd_unregister_taxs' );

@@ -24,7 +24,7 @@
             <?php if (has_term('', 'event-tags')) : ?>
             <div class="post__tags">
               <?= Extras\ungrynerd_svg('icon-tag'); ?>
-              <?= do_shortcode('[event]#_EVENTTAGS[/event]') ?>
+              <?php the_terms(get_the_ID(), 'un_global', '', ', '); ?>
             </div>
             <?php endif; ?>
           </article>
