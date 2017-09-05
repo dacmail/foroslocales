@@ -11,7 +11,7 @@
           <?php get_template_part('templates/entry-meta'); ?>
           <?php if (has_post_thumbnail()): ?>
             <div class="post__thumb">
-              <?php the_post_thumbnail('1000w') ?>
+              <?php the_post_thumbnail('landscape') ?>
               <?php $thumb_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
               <?php if (!empty($thumb_caption)): ?>
                 <p class="post__thumb__caption"><?= Extras\ungrynerd_svg('icon-camera') . ' ' . $thumb_caption; ?></p>

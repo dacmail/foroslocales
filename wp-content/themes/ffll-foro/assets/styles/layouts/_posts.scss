@@ -1,4 +1,8 @@
 .post {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
   &__title {
     font-size: 48px;
     font-weight: bold;
@@ -72,6 +76,8 @@
   }
   &__date {
     @extend .events-list__event__date;
+    display: block;
+    margin-bottom: 15px;
     &--time {
       background-image: url(../images/icon-clock.svg);
       background-size: 15px;

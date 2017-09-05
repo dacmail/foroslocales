@@ -14,6 +14,7 @@
           <?php while ($news->have_posts()) : $news->the_post(); ?>
             <div class="col-md-4">
               <article class="post post--home">
+                <?php the_post_thumbnail('landscape-small'); ?>
                 <h2 class="post__title">
                   <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h2>
