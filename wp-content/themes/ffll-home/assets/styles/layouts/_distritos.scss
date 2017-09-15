@@ -1,0 +1,35 @@
+.map {
+  svg {
+    path {
+      cursor: pointer;
+      &:hover {
+        fill: yellow;
+      }
+    }
+  }
+}
+.distritos {
+  background-color: $light;
+  padding: 60px 0px;
+  &__list {
+    margin: 0px;
+    padding: 0px;
+    li {
+      display: inline-block;
+      list-style: none;
+      width: 49%;
+      a {
+        display: inline-block;
+        line-height: 36px;
+        padding: 0px 10px;
+        font-size: 16px;
+        color: $black;
+        &:hover, &.hover {
+          background-color: $black;
+          color: $white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

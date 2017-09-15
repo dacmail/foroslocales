@@ -19,6 +19,18 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        $('.map svg path').on('mouseenter', function(event) {
+          event.preventDefault();
+          $('.distritos__list #' + $(this).attr('id')).addClass('hover');
+        });
+        $('.map svg path').on('click', function(event) {
+          event.preventDefault();
+          document.querySelector('.distritos__list #' + $(this).attr('id')).click();
+        });
+        $('.map svg path').on('mouseleave', function(event) {
+          event.preventDefault();
+          $('.distritos__list a').removeClass('hover');
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

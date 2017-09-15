@@ -1,0 +1,109 @@
+.preheader {
+  background-color: #fff;
+  padding: 20px 0px;
+  @include media-breakpoint-down(sm) {
+    padding: 10px 0px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.0;
+    color: #000000;
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+      margin-bottom: 0px;
+    }
+  }
+  &__logo {
+    img {
+      max-width: 128px;
+      @include media-breakpoint-down(sm) {
+        max-width: 80px;
+      }
+    }
+  }
+}
+
+.header {
+  padding: 50px 0px;
+  &__site-name {
+    text-align: center;
+    display: block;
+    img {
+      max-height: 150px;
+    }
+  }
+}
+
+
+.nav-primary {
+  background-color: $black;
+  .navbar-toggler-right {
+    @include media-breakpoint-down(md) {
+      right: 0px;
+      top: 0px;
+      padding: 0px;
+      border: 0px;
+      height: 60px;
+      font-size: 30px;
+      &:focus {
+        outline: 0;
+      }
+    }
+    .navbar-toggler-icon {
+      @include media-breakpoint-down(md) {
+        color: $white;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  .navbar {
+    padding: 0px;
+    height: 60px;
+    .navbar-collapse {
+      height: 100%;
+      @include media-breakpoint-down(md) {
+        height: auto;
+        position: relative;
+      }
+    }
+  }
+  .navbar-nav {
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @include media-breakpoint-down(md) {
+      height: auto;
+      background-color: $black;
+      padding: 15px 0px;
+    }
+    .menu-item {
+      font-weight: bold;
+      color: $white;
+      margin-right: 30px;
+      text-transform: lowercase;
+      @include media-breakpoint-down(md) {
+        margin-bottom: 10px;
+        margin-left: 0px;
+      }
+      a {
+        color: $white;
+        &:after {
+          content: '.';
+        }
+      }
+    }
+  }
+}
+
+.admin-bar .sticky-top {
+  top: 32px;
+}
