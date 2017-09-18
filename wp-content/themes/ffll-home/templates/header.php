@@ -27,6 +27,7 @@
         ]);
       endif;
       ?>
+      <a class="follow" target="_blank" href="https://twitter.com/ForosLocales">Síguenos en twitter <?= Extras\ungrynerd_svg('icon-twitter'); ?></a>
     </div>
   </div>
 </nav>

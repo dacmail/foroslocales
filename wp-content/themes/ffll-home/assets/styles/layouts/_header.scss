@@ -62,12 +62,27 @@
         height: auto;
       }
     }
+
+  }
+  .follow {
+    color: $white;
+    text-transform: lowercase;
+    font-weight: bold;
+    svg {
+      position: relative;
+      top: 2px;
+      margin-left: 10px;
+      path {
+        fill: $white;
+      }
+    }
   }
 
   .navbar {
     padding: 0px;
     height: 60px;
     .navbar-collapse {
+      flex-basis: auto;
       height: 100%;
       @include media-breakpoint-down(md) {
         height: auto;
