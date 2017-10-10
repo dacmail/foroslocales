@@ -42,7 +42,7 @@
 <section class="claves">
   <div class="container">
     <div class="col-sm-12">
-      <h2 class="section-title">Claves. <?= Extras\ungrynerd_svg('icon-tag'); ?></h2>
+      <h2 class="section-title">Temas. <?= Extras\ungrynerd_svg('icon-tag'); ?></h2>
       <?php $claves = get_terms('un_global', array('hide_empty' => 0)); ?>
       <ul class="claves__list">
       <?php foreach ($claves as $clave): ?>

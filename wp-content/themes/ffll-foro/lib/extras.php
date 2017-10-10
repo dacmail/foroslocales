@@ -109,9 +109,9 @@ function ungrynerd_doc_taxonomies() {
     array("un_doc", "post", "event"),
     array(
         "hierarchical" => true,
-        "label" => esc_html__( "Claves", 'ungrynerd'),
-        "singular_label" => esc_html__( "Clave", 'ungrynerd'),
-        "rewrite" => array( 'slug' => 'clave', 'hierarchical' => false),
+        "label" => esc_html__( "Temas", 'ungrynerd'),
+        "singular_label" => esc_html__( "Tema", 'ungrynerd'),
+        "rewrite" => array( 'slug' => 'tema', 'hierarchical' => false),
         'show_in_nav_menus' => false,
         )
     );

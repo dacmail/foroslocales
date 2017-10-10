@@ -35,22 +35,68 @@ add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
 
 function ungrynerd_filter_posts($query) {
-  if ($query->is_main_query()) {
+  if ($query->is_main_query() && !is_admin()) {
     $query->set('post_type', array('post', 'event', 'un_doc'));
     $query->set('multisite', 1);
   }
 }
 add_filter('pre_get_posts', __NAMESPACE__ . '\ungrynerd_filter_posts');
 
+/* DOCUMENTS POST TYPE */
+add_action('init',  __NAMESPACE__ . '\ugnrynerd_doc_post_type');
+function ugnrynerd_doc_post_type()  {
+  $labels = array(
+    'name' => __('Documentos', 'ungrynerd'),
+    'singular_name' => __('Documento', 'ungrynerd'),
+    'add_new' => __('Añadir documento', 'ungrynerd'),
+    'add_new_item' => __('Añadir documento', 'ungrynerd'),
+    'edit_item' => __('Editar documento', 'ungrynerd'),
+    'new_item' => __('Nuevo documento', 'ungrynerd'),
+    'view_item' => __('Ver documentos', 'ungrynerd'),
+    'search_items' => __('Buscar documentos', 'ungrynerd'),
+    'not_found' =>  __('No se han encontrado documentos ', 'ungrynerd'),
+    'not_found_in_trash' => __('No hay documentos en la papelera', 'ungrynerd'),
+    'parent_item_colon' => ''
+  );
+
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true,
+    'query_var' => true,
+    'capability_type' => 'post',
+    'show_in_nav_menus' => false,
+    'hierarchical' => false,
+    'exclude_from_search' => false,
+    'menu_position' => 5,
+    'rewrite' => array( 'slug' => 'documentos' ),
+    'taxonomies' => array('un_doc_type', 'un_global'),
+    'has_archive' => true,
+    'supports' => array('title')
+  );
+  register_post_type('un_doc',$args);
+}
 
 function ungrynerd_doc_taxonomies() {
     register_taxonomy("un_global",
-    array("un_doc", "post", "event"),
+    array("un_doc"),
     array(
         "hierarchical" => true,
-        "label" => esc_html__( "Claves", 'ungrynerd'),
-        "singular_label" => esc_html__( "Clave", 'ungrynerd'),
-        "rewrite" => array( 'slug' => 'clave', 'hierarchical' => false),
+        "label" => esc_html__( "Temas", 'ungrynerd'),
+        "singular_label" => esc_html__( "Tema", 'ungrynerd'),
+        "rewrite" => array( 'slug' => 'tema', 'hierarchical' => false),
+        'show_in_nav_menus' => false,
+        )
+    );
+
+    register_taxonomy("un_doc_type",
+    array("un_doc"),
+    array(
+        "hierarchical" => true,
+        "label" => esc_html__( "Tipos", 'ungrynerd'),
+        "singular_label" => esc_html__( "Tipo", 'ungrynerd'),
+        "rewrite" => array( 'slug' => 'tipo', 'hierarchical' => true),
         'show_in_nav_menus' => false,
         )
     );
