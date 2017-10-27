@@ -227,41 +227,41 @@ function ungrynerd_doc_icon($extension = '') {
 
 
 function ungrynerd_pagination($query=null) {
-    global $wp_query;
-    $query = $query ? $query : $wp_query;
-    $big = 999999999;
-    $args = array();
-    if (get_query_var('por')) {
-      $args['por'] = get_query_var('por');
-    }
-    if (get_query_var('tipo')) {
-      $args['tipo'] = get_query_var('tipo');
-    }
-    $paginate = paginate_links( array(
-      'base' => str_replace($big, '%#%', esc_url(remove_query_arg(array('tipo', 'por'), get_pagenum_link($big, false)))),
-      'type' => 'array',
-      'total' => $query->max_num_pages,
-      'format' => '?paged=%#%',
-      'mid_size' => 2,
-      'end_size' => 1,
-      'current' => max( 1, get_query_var('paged') ),
-      'prev_text' => ungrynerd_svg('icon-left'),
-      'next_text' => ungrynerd_svg('icon-right'),
-      'add_args' => array($args)
-      )
-    );
-
-    if ($query->max_num_pages > 1) : ?>
-      <ul class="pagination">
-      <?php foreach ( $paginate as $page ) {
-        echo '<li>' . $page . '</li>';
-      } ?>
-    </ul>
-    <style type="text/css">
-      .pagination li .page-numbers.current { background-color: #<?php header_textcolor(); ?>;  }
-    </style>
-    <?php endif;
+  global $wp_query;
+  $query = $query ? $query : $wp_query;
+  $big = 999999999;
+  $args = array();
+  if (get_query_var('por')) {
+    $args['por'] = get_query_var('por');
   }
+  if (get_query_var('tipo')) {
+    $args['tipo'] = get_query_var('tipo');
+  }
+  $paginate = paginate_links( array(
+    'base' => str_replace($big, '%#%', esc_url(remove_query_arg(array('tipo', 'por'), get_pagenum_link($big, false)))),
+    'type' => 'array',
+    'total' => $query->max_num_pages,
+    'format' => '?paged=%#%',
+    'mid_size' => 2,
+    'end_size' => 1,
+    'current' => max( 1, get_query_var('paged') ),
+    'prev_text' => ungrynerd_svg('icon-left'),
+    'next_text' => ungrynerd_svg('icon-right'),
+    'add_args' => array($args)
+    )
+  );
+
+  if ($query->max_num_pages > 1) : ?>
+    <ul class="pagination">
+    <?php foreach ( $paginate as $page ) {
+      echo '<li>' . $page . '</li>';
+    } ?>
+  </ul>
+  <style type="text/css">
+    .pagination li .page-numbers.current { background-color: #<?php header_textcolor(); ?>;  }
+  </style>
+  <?php endif;
+}
 
 function ungrynerd_og_schema( $output ) {
   return $output . ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"';

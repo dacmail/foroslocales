@@ -32,12 +32,44 @@ function excerpt_more() {
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
-
+function ungryner_add_query_vars( $vars ){
+  $vars[] = "por";
+  $vars[] = "tipo";
+  return $vars;
+}
+add_filter( 'query_vars', __NAMESPACE__ . '\ungryner_add_query_vars' );
 
 function ungrynerd_filter_posts($query) {
-  if ($query->is_main_query() && !is_admin()) {
+  if (!is_tax('un_doc_type')
+  && !is_post_type_archive('un_doc')
+  && $query->is_main_query()
+  && !is_admin()) {
     $query->set('post_type', array('post', 'event', 'un_doc'));
     $query->set('multisite', 1);
+    $query->set('sites__not_in', array(1));
+  } elseif (is_post_type_archive('un_doc') && $query->is_main_query()) {
+    if (get_query_var('por') && get_query_var('tipo')) {
+      $tax_query['relation'] = 'AND';
+    }
+    if (get_query_var('por')) {
+        $tax_query[] = array(
+                        'taxonomy' => 'un_global',
+                        'field'    => 'slug',
+                        'terms'    => get_query_var('por'),
+                      );
+    }
+
+    if (get_query_var('tipo')) {
+        $tax_query[] =  array(
+                          'taxonomy' => 'un_doc_type',
+                          'field'    => 'slug',
+                          'terms'    => get_query_var('tipo'),
+                        );
+    }
+    $query->set('page', get_query_var('paged'));
+    if (!empty($tax_query)) {
+      $query->set('tax_query', $tax_query);
+    }
   }
 }
 add_filter('pre_get_posts', __NAMESPACE__ . '\ungrynerd_filter_posts');
@@ -70,7 +102,7 @@ function ugnrynerd_doc_post_type()  {
     'hierarchical' => false,
     'exclude_from_search' => false,
     'menu_position' => 5,
-    'rewrite' => array( 'slug' => 'documentos' ),
+    'rewrite' => array( 'slug' => 'documentacion' ),
     'taxonomies' => array('un_doc_type', 'un_global'),
     'has_archive' => true,
     'supports' => array('title')
@@ -79,6 +111,17 @@ function ugnrynerd_doc_post_type()  {
 }
 
 function ungrynerd_doc_taxonomies() {
+  register_taxonomy("un_archive",
+    array(),
+    array(
+        "hierarchical" => true,
+        "label" => esc_html__( "Categorización", 'ungrynerd'),
+        "singular_label" => esc_html__( "Categoría", 'ungrynerd'),
+        "rewrite" => array( 'slug' => 'archivado', 'hierarchical' => true),
+        'show_in_nav_menus' => false,
+        )
+    );
+
     register_taxonomy("un_global",
     array("un_doc"),
     array(
@@ -113,4 +156,58 @@ function ungrynerd_svg($svg) {
   include($svg_file_path);
   $output .= ob_get_clean();
   return $output;
+}
+
+
+function ungrynerd_doc_icon($extension = '') {
+  $icon = 'icon-download';
+  $preview_formats = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
+  if (in_array($extension, $preview_formats)) {
+    $icon = 'icon-preview';
+  }
+  return ungrynerd_svg($icon);
+}
+
+function ungrynerd_pagination($query=null) {
+  global $wp_query;
+  $query = $query ? $query : $wp_query;
+  $big = 999999999;
+  $args = array();
+  if (get_query_var('por')) {
+    $args['por'] = get_query_var('por');
+  }
+  if (get_query_var('tipo')) {
+    $args['tipo'] = get_query_var('tipo');
+  }
+  $paginate = paginate_links( array(
+    'base' => str_replace($big, '%#%', esc_url(remove_query_arg(array('tipo', 'por'), get_pagenum_link($big, false)))),
+    'type' => 'array',
+    'total' => $query->max_num_pages,
+    'format' => '?paged=%#%',
+    'mid_size' => 2,
+    'end_size' => 1,
+    'current' => max( 1, get_query_var('paged') ),
+    'prev_text' => ungrynerd_svg('icon-left'),
+    'next_text' => ungrynerd_svg('icon-right'),
+    'add_args' => array($args)
+    )
+  );
+
+  if ($query->max_num_pages > 1) : ?>
+    <ul class="pagination">
+    <?php foreach ( $paginate as $page ) {
+      echo '<li>' . $page . '</li>';
+    } ?>
+  </ul>
+  <style type="text/css">
+    .pagination li .page-numbers.current { background-color: #<?php header_textcolor(); ?>;  }
+  </style>
+  <?php endif;
+}
+
+
+function ungrynerd_site_link() {
+  global $blog_id;
+  $site = get_blog_details($blog_id);
+  return '<h2 class="results__site-name"><a href="'.  $site->siteurl . '">'.  $site->blogname . '</a></h2>';
 }

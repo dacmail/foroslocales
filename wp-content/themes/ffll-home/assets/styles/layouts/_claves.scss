@@ -23,3 +23,142 @@
     }
   }
 }
+
+.posts-list {
+  .results {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    @include media-breakpoint-down(sm) {
+      flex-flow: column;
+      margin-bottom: 30px;
+      background-color: $light;
+    }
+    &__format {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 60px;
+      font-weight: bold;
+      text-align: center;
+      color: $white;
+      text-transform: uppercase;
+      background-color: $pdf;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        height: 30px;
+        flex: 0 0 100%;
+        margin-bottom: 10px;
+      }
+      &.png {
+        background-color: $png;
+      }
+      &.jpg {
+        background-color: $jpg;
+      }
+      &.doc {
+        background-color: $doc;
+      }
+      &.gif {
+        background-color: $gif;
+      }
+      &.ppt {
+        background-color: $ppt;
+      }
+      &--news {
+        background-color: $black;
+        svg {
+          path {
+            fill: $white;
+          }
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        height: 40px;
+      }
+    }
+    &__data {
+      flex: 1 1 auto;
+      border-top: solid 2px $black;
+      padding-top: 48px;
+      margin: 30px 20px 0px 20px;
+      position: relative;
+      @include media-breakpoint-down(sm) {
+        border-top: 0px;
+        padding-top: 0px;
+      }
+    }
+    &__site-name {
+      position: absolute;
+      border-right: 20px solid #fff;
+      top: -31px;
+      a {
+        display: block;
+        padding: 17px 20px;
+        background-color: $white;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.0;
+        border: solid 5px $black;
+        color: $black;
+      }
+    }
+    &__title {
+      font-size: 18px;
+      margin-bottom: 18px;
+      font-weight: bold;
+      line-height: 1.33;
+      color: $black;
+      a {
+        color: $black;
+      }
+    }
+    &__meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+      @include media-breakpoint-down(sm) {
+        flex-flow: column;
+        margin-bottom: 0px;
+        align-items: flex-start;
+      }
+      div {
+        font-size: 16px;
+        font-weight: bold;
+        color: $black;
+        margin-right: 20px;
+        @include media-breakpoint-down(sm) {
+          margin-right: 0px;
+          margin-bottom: 15px;
+        }
+        a {
+          color: $black;
+        }
+      }
+    }
+    &__link {
+      background-color: rgba($black, 0.1);
+      width: 60px;
+      height: 60px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex: 0 0 60px;
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        flex: 0 0 100%;
+        margin-bottom: 0px;
+      }
+      &--empty {
+        background-color: transparent;
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+      }
+    }
+  }
+}

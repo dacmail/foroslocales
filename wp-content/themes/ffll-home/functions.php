@@ -16,7 +16,9 @@ $sage_includes = [
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
-  'lib/customizer.php' // Theme customizer
+  'lib/customizer.php', // Theme customizer
+  'lib/meta-box/meta-box.php', // Metabox Library
+  'lib/meta-boxes.php' // Custom metaboxes
 ];
 
 foreach ($sage_includes as $file) {

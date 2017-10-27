@@ -45,6 +45,15 @@
         // JavaScript to be fired on the home page, after the init JS
       }
     },
+    // Documentos
+    'post_type_archive_un_doc': {
+      init: function() {
+        $('.filters__form select').on('change', function(event) {
+          event.preventDefault();
+          $('.filters__form').submit();
+        });
+      }
+    },
     // About us page, note the change from about-us to about_us.
     'about_us': {
       init: function() {

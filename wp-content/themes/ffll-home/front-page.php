@@ -1,7 +1,7 @@
 <?php use Roots\Sage\Extras; ?>
 <?php use Roots\Sage\Assets; ?>
 
-<section class="distritos">
+<section class="distritos" id="distritos">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -39,7 +39,7 @@
 </section>
 
 
-<section class="claves">
+<section class="claves" id="temas">
   <div class="container">
     <div class="col-sm-12">
       <h2 class="section-title">Temas. <?= Extras\ungrynerd_svg('icon-tag'); ?></h2>

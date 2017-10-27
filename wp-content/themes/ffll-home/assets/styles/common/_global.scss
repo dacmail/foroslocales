@@ -16,5 +16,15 @@ body {
   }
 }
 
-
+.supertitle {
+  background-color: $light;
+  padding: 54px 0px;
+  margin-bottom: 60px;
+  .title-search {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.0;
+    @extend .container;
+  }
+}
 
