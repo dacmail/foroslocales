@@ -514,7 +514,7 @@ add_filter( 'get_header_image_tag', 'twentyseventeen_header_image_tag', 10, 3 );
  * @param array $attr       Attributes for the image markup.
  * @param int   $attachment Image attachment ID.
  * @param array $size       Registered image size or flat array of height and width dimensions.
- * @return string A source size value for use in a post thumbnail 'sizes' attribute.
+ * @return array The filtered attributes for the image markup.
  */
 function twentyseventeen_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	if ( is_archive() || is_search() || is_home() ) {
@@ -542,6 +542,25 @@ function twentyseventeen_front_page_template( $template ) {
 add_filter( 'frontpage_template',  'twentyseventeen_front_page_template' );
 
 /**
+ * Modifies tag cloud widget arguments to display all tags in the same font size
+ * and use list format for better accessibility.
+ *
+ * @since Twenty Seventeen 1.4
+ *
+ * @param array $args Arguments for tag cloud widget.
+ * @return array The filtered arguments for tag cloud widget.
+ */
+function twentyseventeen_widget_tag_cloud_args( $args ) {
+	$args['largest']  = 1;
+	$args['smallest'] = 1;
+	$args['unit']     = 'em';
+	$args['format']   = 'list';
+
+	return $args;
+}
+add_filter( 'widget_tag_cloud_args', 'twentyseventeen_widget_tag_cloud_args' );
+
+/**
  * Implement the Custom Header feature.
  */
 require get_parent_theme_file_path( '/inc/custom-header.php' );
@@ -565,197 +584,3 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
-
-
-class WP_Query_Multisite extends WP_Query{
-
-
-	var $args;
-
-	function __construct( $args = array() ) {
-		$this->args = $args;
-		$this->parse_multisite_args();
-		$this->add_filters();
-		$this->query($args);
-		$this->remove_filters();
-
-	}
-
-	function parse_multisite_args() {
-		global $wpdb;
-
-		$site_IDs = $wpdb->get_col( "select blog_id from $wpdb->blogs" );
-
-		if ( isset( $this->args['sites']['sites__not_in'] ) )
-			foreach($site_IDs as $key => $site_ID )
-				if (in_array($site_ID, $this->args['sites']['sites__not_in']) ) unset($site_IDs[$key]);
-
-		if ( isset( $this->args['sites']['sites__in'] ) )
-			foreach($site_IDs as $key => $site_ID )
-				if ( ! in_array($site_ID, $this->args['sites']['sites__in']) )
-					unset($site_IDs[$key]);
-
-
-		$site_IDs = array_values($site_IDs);
-		$this->sites_to_query = $site_IDs;
-	}
-
-	function add_filters() {
-
-			add_filter('posts_request', array(&$this, 'create_and_unionize_select_statements') );
-			add_filter('posts_fields', array(&$this, 'add_site_ID_to_posts_fields') );
-			add_action('the_post', array(&$this, 'switch_to_blog_while_in_loop'));
-			add_action('loop_end', array(&$this, 'restore_current_blog_after_loop'));
-
-	}
-	function remove_filters() {
-			remove_filter('posts_request', array(&$this, 'create_and_unionize_select_statements') );
-			remove_filter('posts_fields', array(&$this, 'add_site_ID_to_posts_fields') );
-
-	}
-
-	function create_and_unionize_select_statements( $sql ) {
-		global $wpdb;
-
-		$root_site_db_prefix = $wpdb->prefix;
-
-		$page = isset( $this->args['paged'] ) ? $this->args['paged'] : 1;
-		$posts_per_page = isset( $this->args['posts_per_page'] ) ? $this->args['posts_per_page'] : 10;
-		$s = ( isset( $this->args['s'] ) ) ? $this->args['s'] : false;
-
-		foreach ($this->sites_to_query as $key => $site_ID) :
-
-			switch_to_blog( $site_ID );
-
-			$new_sql_select = str_replace($root_site_db_prefix, $wpdb->prefix, $sql);
-			$new_sql_select = preg_replace("/ LIMIT ([0-9]+), ".$posts_per_page."/", "", $new_sql_select);
-			$new_sql_select = str_replace("SQL_CALC_FOUND_ROWS ", "", $new_sql_select);
-			$new_sql_select = str_replace("# AS site_ID", "'$site_ID' AS site_ID", $new_sql_select);
-			$new_sql_select = preg_replace( '/ORDER BY ([A-Za-z0-9_.]+)/', "", $new_sql_select);
-			$new_sql_select = str_replace(array("DESC", "ASC"), "", $new_sql_select);
-
-			if( $s ){
-				$new_sql_select = str_replace("LIKE '%{$s}%' , wp_posts.post_date", "", $new_sql_select); //main site id
-				$new_sql_select = str_replace("LIKE '%{$s}%' , wp_{$site_ID}_posts.post_date", "", $new_sql_select);  // all other sites
-			}
-
-			$new_sql_selects[] = $new_sql_select;
-			restore_current_blog();
-
-		endforeach;
-
-		if ( $posts_per_page > 0 ) {
-			$skip = ( $page * $posts_per_page ) - $posts_per_page;
-			$limit = "LIMIT $skip, $posts_per_page";
-		} else {
-            $limit = '';
-        }
-		$orderby = "tables.post_date DESC";
-		$new_sql = "SELECT SQL_CALC_FOUND_ROWS tables.* FROM ( " . implode(" UNION ", $new_sql_selects) . ") tables ORDER BY $orderby " . $limit;
-
-		return $new_sql;
-	}
-
-	function add_site_ID_to_posts_fields( $sql ) {
-		$sql_statements[] = $sql;
-		$sql_statements[] = "# AS site_ID";
-		return implode(', ', $sql_statements);
-	}
-
-	function switch_to_blog_while_in_loop( $post ) {
-		global $blog_id;
-		if($post->site_ID && $blog_id != $post->site_ID )
-			switch_to_blog($post->site_ID);
-		else
-			restore_current_blog();
-	}
-
-	function restore_current_blog_after_loop() {
-		restore_current_blog();
-	}
-}
-
-
-
-
-/* DOCUMENTS POST TYPE */
-add_action('init',  'ugnrynerd_doc_post_type');
-function ugnrynerd_doc_post_type()  {
-  $labels = array(
-    'name' => __('Documentos', 'ungrynerd'),
-    'singular_name' => __('Documento', 'ungrynerd'),
-    'add_new' => __('Añadir documento', 'ungrynerd'),
-    'add_new_item' => __('Añadir documento', 'ungrynerd'),
-    'edit_item' => __('Editar documento', 'ungrynerd'),
-    'new_item' => __('Nuevo documento', 'ungrynerd'),
-    'view_item' => __('Ver documentos', 'ungrynerd'),
-    'search_items' => __('Buscar documentos', 'ungrynerd'),
-    'not_found' =>  __('No se han encontrado documentos ', 'ungrynerd'),
-    'not_found_in_trash' => __('No hay documentos en la papelera', 'ungrynerd'),
-    'parent_item_colon' => ''
-  );
-
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'publicly_queryable' => true,
-    'show_ui' => true,
-    'query_var' => true,
-    'capability_type' => 'post',
-    'show_in_nav_menus' => false,
-    'hierarchical' => false,
-    'exclude_from_search' => false,
-    'menu_position' => 5,
-    'rewrite' => array( 'slug' => 'documentos' ),
-    'taxonomies' => array('un_archive', 'un_doc_type', 'un_global'),
-    'has_archive' => true,
-    'supports' => array('title')
-  );
-  register_post_type('un_doc',$args);
-}
-
-add_action('init',  'ugnrynerd_entidades_post_type');
-function ugnrynerd_entidades_post_type()  {
-  $labels = array(
-    'name' => __('Entidades', 'ungrynerd'),
-    'singular_name' => __('Entidad', 'ungrynerd'),
-    'add_new' => __('Añadir entidad', 'ungrynerd'),
-    'add_new_item' => __('Añadir entidad', 'ungrynerd'),
-    'edit_item' => __('Editar entidad', 'ungrynerd'),
-    'new_item' => __('Nuevo entidad', 'ungrynerd'),
-    'view_item' => __('Ver Entidades', 'ungrynerd'),
-    'search_items' => __('Buscar Entidades', 'ungrynerd'),
-    'not_found' =>  __('No se han encontrado Entidades ', 'ungrynerd'),
-    'not_found_in_trash' => __('No hay Entidades en la papelera', 'ungrynerd'),
-    'parent_item_colon' => ''
-  );
-
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'publicly_queryable' => true,
-    'show_ui' => true,
-    'query_var' => true,
-    'capability_type' => 'post',
-    'show_in_nav_menus' => false,
-    'hierarchical' => false,
-    'exclude_from_search' => false,
-    'menu_position' => 5,
-    'rewrite' => array( 'slug' => 'entidades' ),
-    'taxonomies' => array('un_global'),
-    'has_archive' => true,
-    'supports' => array('title')
-  );
-  register_post_type('un_entidad',$args);
-}
-
-
-
-function my_swt_post_type_filter( $allowed ) {
-	$allowed['un_entidad'] = true;
-	$allowed['event'] = true;
-	$allowed['un_doc'] = true;
-	return $allowed;
-}
-
-add_filter( 'sitewide_tags_allowed_post_types', 'my_swt_post_type_filter' );

@@ -5,7 +5,7 @@
   <div class="container">
     <h2 class="preheader__title"><a href="<?php echo network_site_url(); ?>">Foros Locales Madrid</a></h2>
     <a href="http://madrid.es" class="preheader__logo">
-      <img  src="<?= Assets\asset_path('images/logo_madrid.png'); ?>">
+      <img alt="Ayuntamiento de Madrid" src="<?= Assets\asset_path('images/logo_madrid.png'); ?>">
     </a>
   </div>
 </section>

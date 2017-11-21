@@ -297,3 +297,16 @@ function ungrynerd_unregister_taxs() {
   unregister_taxonomy_for_object_type( 'event-categories', 'event' );
 }
 add_action( 'init', __NAMESPACE__ . '\ungrynerd_unregister_taxs' );
+
+
+
+function ungrynerd_remove_menu_pages() {
+  global $user_ID;
+  echo "role" . !current_user_can('activate_plugins');
+  if (!current_user_can('activate_plugins')) {
+    echo "usercan";
+    remove_menu_page('edit-comments.php');
+    remove_menu_page( 'wpcf7' );
+  }
+}
+add_action( 'admin_init', __NAMESPACE__ . '\ungrynerd_remove_menu_pages' );
