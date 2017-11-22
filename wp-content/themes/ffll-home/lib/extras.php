@@ -198,10 +198,7 @@ function ungrynerd_pagination($query=null) {
     <?php foreach ( $paginate as $page ) {
       echo '<li>' . $page . '</li>';
     } ?>
-  </ul>
-  <style type="text/css">
-    .pagination li .page-numbers.current { background-color: #<?php header_textcolor(); ?>;  }
-  </style>
+    </ul>
   <?php endif;
 }
 

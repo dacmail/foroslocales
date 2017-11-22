@@ -9,7 +9,7 @@
           wp_nav_menu([
             'theme_location' => 'primary_navigation',
             'menu_class' => 'nav navbar-nav mr-auto',
-            'container_id' => 'primary-nav',
+            'container_id' => 'foot-nav',
             'container_class' => 'navbar-collapse navbar-left'
           ]);
         endif;
@@ -23,8 +23,9 @@
     <div class="container">
       <h2 class="preheader__title">Foros Locales Madrid</h2>
       <a href="http://madrid.es" class="preheader__logo">
-        <img src="<?= Assets\asset_path('images/logo_madrid.png'); ?>">
+        <img alt="Foros Locales Madrid" src="<?= Assets\asset_path('images/logo_madrid.png'); ?>">
       </a>
     </div>
   </section>
 </footer>
+

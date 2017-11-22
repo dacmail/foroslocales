@@ -292,7 +292,6 @@ add_action( 'wp_head', __NAMESPACE__ . '\ugnrynerd_og_tags', 5 );
 
 function ungrynerd_unregister_taxs() {
   unregister_taxonomy_for_object_type( 'post_tag', 'post' );
-  unregister_taxonomy_for_object_type( 'category', 'post' );
   unregister_taxonomy_for_object_type( 'event-tags', 'event' );
   unregister_taxonomy_for_object_type( 'event-categories', 'event' );
 }
@@ -302,11 +301,19 @@ add_action( 'init', __NAMESPACE__ . '\ungrynerd_unregister_taxs' );
 
 function ungrynerd_remove_menu_pages() {
   global $user_ID;
-  echo "role" . !current_user_can('activate_plugins');
   if (!current_user_can('activate_plugins')) {
-    echo "usercan";
     remove_menu_page('edit-comments.php');
-    remove_menu_page( 'wpcf7' );
+    remove_menu_page('wpcf7');
+    remove_menu_page('edit.php?post_type=page');
   }
 }
 add_action( 'admin_init', __NAMESPACE__ . '\ungrynerd_remove_menu_pages' );
+
+function ungrynerd_prevent_terms($term, $taxonomy) {
+  if ('un_global' === $taxonomy && !current_user_can( 'activate_plugins')) {
+    return new WP_Error( 'term_addition_blocked', __( 'No puedes añadir temas' ) );
+  }
+
+  return $term;
+}
+add_action('pre_insert_term', __NAMESPACE__ . '\ungrynerd_prevent_terms', 1, 2);

@@ -4,7 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h2 class="section-title">Noticias. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
+        <?php if (is_category()): ?>
+          <h2 class="section-title"><?php echo single_cat_title(); ?>. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
+        <?php else : ?>
+          <h2 class="section-title">Noticias. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
+        <?php endif ?>
       </div>
       <div class="col-md-8">
         <?php if (have_posts()): ?>

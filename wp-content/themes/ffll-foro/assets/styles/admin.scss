@@ -1,0 +1,11 @@
+#un_doc_type-adder, #un_archive-adder, #un_global-adder {
+  display: none;
+}
+.post-new-php.post-type-event {
+  #authordiv,
+  #commentstatusdiv,
+  #postexcerpt,
+  #em-event-meta {
+    display: none;
+  }
+}

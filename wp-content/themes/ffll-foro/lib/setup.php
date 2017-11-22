@@ -42,9 +42,6 @@ function setup() {
   add_image_size('landscape', 1500, 600, true);
   add_image_size('landscape-small', 700, 300, true);
 
-  // Enable post formats
-  // http://codex.wordpress.org/Post_Formats
-  add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
 
   // Enable HTML5 markup support
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
@@ -125,3 +122,7 @@ function assets() {
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
+function ungrynerd__wp_admin_style($hook) {
+  wp_enqueue_style('custom_wp_admin_css', Assets\asset_path('styles/admin.css'));
+}
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\ungrynerd__wp_admin_style');

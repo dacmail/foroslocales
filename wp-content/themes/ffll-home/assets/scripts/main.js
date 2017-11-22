@@ -21,11 +21,13 @@
         // JavaScript to be fired on all pages
         $('.map svg path').on('mouseenter', function(event) {
           event.preventDefault();
-          $('.distritos__list #' + $(this).attr('id')).addClass('hover');
+          var id = $(this).attr('id').slice(0, -5);
+          $('.distritos__list #' + id + '-link').addClass('hover');
         });
         $('.map svg path').on('click', function(event) {
           event.preventDefault();
-          document.querySelector('.distritos__list #' + $(this).attr('id')).click();
+          var id = $(this).attr('id').slice(0, -5);
+          document.querySelector('.distritos__list #' + id + '-link').click();
         });
         $('.map svg path').on('mouseleave', function(event) {
           event.preventDefault();

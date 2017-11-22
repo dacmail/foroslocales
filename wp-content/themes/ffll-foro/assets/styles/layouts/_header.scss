@@ -81,7 +81,7 @@
     font-weight: bold;
     flex: 1 0 auto;
     display: block;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s linear;
     @include media-breakpoint-down(md) {
       line-height: 60px;
