@@ -18,6 +18,6 @@
     <?php the_time(get_option('date_format')); ?>
   </div>
   <a target="_blank" href="<?= $file; ?>" class="doc-list__document__link" >
-    <?= Extras\ungrynerd_doc_icon($ext); ?>
+    <span>Ver</span> <?= Extras\ungrynerd_doc_icon($ext); ?>
   </a>
 </div>

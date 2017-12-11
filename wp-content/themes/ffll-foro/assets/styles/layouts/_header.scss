@@ -82,6 +82,8 @@
     flex: 1 0 auto;
     display: block;
     opacity: 1;
+    font-size: 16px;
+    margin: 0px;
     transition: opacity .3s linear;
     @include media-breakpoint-down(md) {
       line-height: 60px;
@@ -190,6 +192,9 @@
     }
     .search__close {
       color: $white;
+      span {
+        display: none;
+      }
     }
     &.open {
       width: 50%;

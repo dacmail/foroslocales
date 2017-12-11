@@ -12,7 +12,11 @@
 <nav class="menu nav-primary sticky-top">
   <div class="container">
     <div class="navbar navbar-toggleable-md justify-content-between">
-      <span class="blog-name"><?php bloginfo('name'); ?></span>
+      <?php if (is_front_page()): ?>
+        <h1 class="blog-name"><?php bloginfo('name'); ?></h1>
+      <?php else: ?>
+        <span class="blog-name"><?php bloginfo('name'); ?></span>
+      <?php endif ?>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
           &#9776;
@@ -25,7 +29,7 @@
           'menu_class' => 'nav navbar-nav ml-auto',
           'container_id' => 'primary-nav',
           'container_class' => 'collapse navbar-collapse navbar-right',
-          'items_wrap' => '<div class="search-wrapper">' . get_search_form(false) . '<a href="#" class="search__close">' . Extras\ungrynerd_svg('icon-close') . '</a></div><ul id="%1$s" class="%2$s">%3$s</ul>'
+          'items_wrap' => '<div class="search-wrapper">' . get_search_form(false) . '<a href="#" class="search__close"><span>Cerrar</span>' . Extras\ungrynerd_svg('icon-close') . '</a></div><ul id="%1$s" class="%2$s">%3$s</ul>'
         ]);
       endif;
       ?>
@@ -33,7 +37,7 @@
   </div>
 </nav>
 <header class="header" style="background-color: #<?php header_textcolor(); ?>;">
-  <div class="container" style="background-image:url(<?php header_image(); ?>);">
+  <div class="container" style="background-image:url(<?php header_image(); ?>);" itemscope itemtype="http://schema.org/Brand">
       <?php if (has_custom_logo()): ?>
         <?php the_custom_logo(); ?>
       <?php else: ?>

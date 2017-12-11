@@ -12,10 +12,11 @@
               </h1>
               <?php get_template_part('templates/entry-meta'); ?>
               <aside class="post post--event hidden-sm-up">
-                <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
-                <time class="post__date post__date--time"><?php the_time('H:i'); ?></time>
+                <span class="post__date"><?php the_time(get_option('date_format')); ?></span>
+                <span class="post__date post__date--time"><?php the_time('H:i'); ?></span>
                 <?= do_shortcode('[event]{has_location}<p class="post__location">#_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONPOSTCODE, #_LOCATIONTOWN){/has_location}[/event]</p>') ?>
-                <a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añadir a Google Calendar</a>
+                <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añádelo a Google Calendar</a></p>
+                <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTICALURL[/event]') ?>">Añádelo a tu Calendario</a></p>
               </aside>
             </header>
             <div class="post__content">
@@ -31,11 +32,12 @@
         </div>
         <div class="col-md-4">
           <aside class="post post--event">
-            <time class="post__date"><?php the_time(get_option('date_format')); ?></time>
-            <time class="post__date post__date--time"><?php the_time('H:i'); ?></time>
+            <span class="post__date"><?php the_time(get_option('date_format')); ?></span>
+            <span class="post__date post__date--time"><?php the_time('H:i'); ?></span>
             <?= do_shortcode('[event]{has_location}#_LOCATIONMAP{/has_location}[/event]') ?>
             <?= do_shortcode('[event]{has_location}<p class="post__location">#_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONPOSTCODE, #_LOCATIONTOWN){/has_location}[/event]</p>') ?>
-            <a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añadir a Google Calendar</a>
+            <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añádelo a Google Calendar</a></p>
+            <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTICALURL[/event]') ?>">Añádelo a tu Calendario</a></p>
           </aside>
         </div>
       </div>

@@ -3,7 +3,7 @@
 
 <section class="preheader">
   <div class="container">
-    <h2 class="preheader__title"><a href="<?php echo network_site_url(); ?>">Foros Locales Madrid</a></h2>
+    <h1 class="preheader__title"><a href="<?php echo network_site_url(); ?>">Foros Locales Madrid</a></h1>
     <a href="http://madrid.es" class="preheader__logo">
       <img src="<?= Assets\asset_path('images/logo_madrid.png'); ?>" alt="Ayuntamiento de Madrid">
     </a>

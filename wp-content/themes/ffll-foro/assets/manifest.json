@@ -27,6 +27,6 @@
     }
   },
   "config": {
-    "devUrl": "http://foroslocales.dev/foro-local/"
+    "devUrl": "http://foroslocales.localhost/foro-local/"
   }
 }

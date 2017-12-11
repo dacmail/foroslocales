@@ -125,6 +125,9 @@
       display: flex;
       justify-content: center;
       flex: 0 0 60px;
+      span {
+        display: none;
+      }
       @include media-breakpoint-down(sm) {
         width: 100%;
         flex: 1 1 100%;
