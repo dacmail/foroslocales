@@ -13,9 +13,9 @@
   <div class="container">
     <div class="navbar navbar-toggleable-md justify-content-between">
       <?php if (is_front_page()): ?>
-        <h1 class="blog-name"><?php bloginfo('name'); ?></h1>
+        <h1 class="blog-name"><a href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
       <?php else: ?>
-        <span class="blog-name"><?php bloginfo('name'); ?></span>
+        <span class="blog-name"><a href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></span>
       <?php endif ?>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">

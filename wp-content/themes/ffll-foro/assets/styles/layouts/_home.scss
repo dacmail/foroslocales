@@ -20,6 +20,11 @@
 
 .news-home {
   padding: 60px 0px;
+  &--logros {
+    background-color: $light;
+    margin-top: -65px;
+    margin-bottom: 60px;
+  }
   .title-wrapper {
     display: flex;
     justify-content: space-between;

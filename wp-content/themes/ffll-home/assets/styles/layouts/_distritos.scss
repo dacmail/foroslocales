@@ -1,4 +1,7 @@
 .map {
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
   svg {
     path {
       cursor: pointer;
@@ -8,9 +11,11 @@
     }
   }
 }
+body.distritos {
+  padding: 0px;
+}
 .distritos {
-  background-color: $light;
-  padding: 60px 0px;
+  padding: 80px 0px 60px 0px;
   &__list {
     margin: 0px;
     padding: 0px;
@@ -18,12 +23,18 @@
       display: inline-block;
       list-style: none;
       width: 49%;
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
       a {
         display: inline-block;
         line-height: 36px;
         padding: 0px 10px;
         font-size: 16px;
         color: $black;
+        @include media-breakpoint-down(md) {
+          padding: 0px;
+        }
         &:hover, &.hover {
           background-color: $black;
           color: $white;

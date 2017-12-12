@@ -9,7 +9,7 @@
     <div class="container">
       <div class="title-wrapper">
         <h2 class="section-title">Noticias. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
-        <a href="<?= get_post_type_archive_link('post'); ?>" class="button">ir a las noticias de <?= bloginfo('blogname') ?></a>
+        <a href="<?= get_post_type_archive_link('post'); ?>" class="button">ver todas las noticias</a>
       </div>
       <div class="row">
         <?php while ($news->have_posts()) : $news->the_post(); ?>

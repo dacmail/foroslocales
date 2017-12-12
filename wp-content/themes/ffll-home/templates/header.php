@@ -11,7 +11,7 @@
 </section>
 <nav class="menu nav-primary sticky-top">
   <div class="container">
-    <div class="navbar navbar-expand-md justify-content-between">
+    <div class="navbar navbar-expand-lg justify-content-between">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
           &#9776;

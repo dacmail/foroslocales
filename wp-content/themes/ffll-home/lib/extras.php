@@ -43,7 +43,8 @@ function ungrynerd_filter_posts($query) {
   if (!is_tax('un_doc_type')
   && !is_post_type_archive('un_doc')
   && $query->is_main_query()
-  && !is_admin()) {
+  && !is_admin()
+  && !is_page()) {
     $query->set('post_type', array('post', 'event', 'un_doc'));
     $query->set('multisite', 1);
     $query->set('sites__not_in', array(1));

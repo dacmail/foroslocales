@@ -85,6 +85,9 @@
     font-size: 16px;
     margin: 0px;
     transition: opacity .3s linear;
+    a {
+      color: $white;
+    }
     @include media-breakpoint-down(md) {
       line-height: 60px;
       opacity: 1;
