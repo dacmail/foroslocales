@@ -8,6 +8,22 @@ use Roots\Sage\Assets;
  * Add postMessage support
  */
 function customize_register($wp_customize) {
+  $wp_customize->add_section( 'ungrynerd_home_section' , array(
+    'title'       => __( 'Home', 'ungrynerd' ),
+    'priority'    => 60,
+  ) );
+
+  $wp_customize->add_setting( 'ungrynerd_hide_contact');
+
+
+  $wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ungrynerd_hide_contact_checkbox', array(
+    'type' => 'checkbox',
+    'label'    => __( 'Ocultar Formulario de contacto', 'ungrynerd' ),
+    'section'  => 'ungrynerd_home_section',
+    'settings' => 'ungrynerd_hide_contact',
+  ) ) );
+
+
   $wp_customize->get_setting('blogname')->transport = 'postMessage';
 }
 add_action('customize_register', __NAMESPACE__ . '\\customize_register');
