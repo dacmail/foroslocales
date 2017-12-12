@@ -14,13 +14,20 @@ function customize_register($wp_customize) {
   ) );
 
   $wp_customize->add_setting( 'ungrynerd_hide_contact');
-
-
   $wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ungrynerd_hide_contact_checkbox', array(
     'type' => 'checkbox',
     'label'    => __( 'Ocultar Formulario de contacto', 'ungrynerd' ),
     'section'  => 'ungrynerd_home_section',
     'settings' => 'ungrynerd_hide_contact',
+  ) ) );
+
+  $wp_customize->add_setting( 'ungrynerd_show_intro');
+  $wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'ungrynerd_show_intro_checkbox', array(
+    'type' => 'checkbox',
+    'label'    => __( 'Mostrar texto introducción', 'ungrynerd' ),
+    'description'    => __( 'El texto introductorio se puede cambiar editando el contenido de la página de inicio en el menú Páginas del panel de control.', 'ungrynerd' ),
+    'section'  => 'ungrynerd_home_section',
+    'settings' => 'ungrynerd_show_intro',
   ) ) );
 
 

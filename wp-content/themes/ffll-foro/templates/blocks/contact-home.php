@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Extras; ?>
 <?php if (!get_theme_mod('ungrynerd_hide_contact')): ?>
-  <section class="contact-home" id="contacto">
+  <section class="sections contact-home" id="contacto">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">

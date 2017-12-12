@@ -5,11 +5,11 @@
                       'posts_per_page' => 3,
                       'category__not_in' => array(get_cat_ID('Logros')))); ?>
 <?php if ($news->have_posts()): ?>
-  <section class="news-home">
+  <section class="sections news-home">
     <div class="container">
       <div class="title-wrapper">
         <h2 class="section-title">Noticias. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
-        <a href="<?= get_post_type_archive_link('post'); ?>" class="button">ver todas las noticias</a>
+        <a href="<?= get_post_type_archive_link('post'); ?>" class="button">ver más noticias</a>
       </div>
       <div class="row">
         <?php while ($news->have_posts()) : $news->the_post(); ?>

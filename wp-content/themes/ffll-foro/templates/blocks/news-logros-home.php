@@ -6,11 +6,11 @@
                         'posts_per_page' => 3,
                         'cat' => $logros)); ?>
   <?php if ($news->have_posts()): ?>
-    <section class="news-home news-home--logros">
+    <section class="sections news-home news-home--logros">
       <div class="container">
         <div class="title-wrapper">
           <h2 class="section-title">Logros. <?= Extras\ungrynerd_svg('icon-news'); ?></h2>
-          <a href="<?= get_category_link($logros); ?>" class="button">ver todos los logros</a>
+          <a href="<?= get_category_link($logros); ?>" class="button">ver más logros</a>
         </div>
         <div class="row">
           <?php while ($news->have_posts()) : $news->the_post(); ?>

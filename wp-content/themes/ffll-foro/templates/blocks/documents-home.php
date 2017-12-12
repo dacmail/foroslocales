@@ -4,7 +4,7 @@
                       'post_type' => 'un_doc',
                       'posts_per_page' => 5)); ?>
 <?php if ($docs->have_posts()): ?>
-  <section class="documents-home">
+  <section class="sections documents-home">
     <div class="container">
       <div class="title-wrapper">
         <h2 class="section-title">Documentos. <?= Extras\ungrynerd_svg('icon-folder'); ?></h2>

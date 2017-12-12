@@ -1,5 +1,7 @@
 <?php use Roots\Sage\Extras; ?>
 
+<?php get_template_part('templates/blocks/intro', 'home'); ?>
+
 <?php get_template_part('templates/blocks/news-logros', 'home'); ?>
 
 <?php get_template_part('templates/blocks/calendar', 'home'); ?>

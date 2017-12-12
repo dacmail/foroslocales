@@ -1,7 +1,7 @@
 <?php use Roots\Sage\Extras; ?>
 <?php $events = EM_Events::get() ?>
 <?php if (count($events)): ?>
-  <section class="calendar-home">
+  <section class="sections calendar-home">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">

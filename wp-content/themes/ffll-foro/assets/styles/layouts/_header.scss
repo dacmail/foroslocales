@@ -16,6 +16,7 @@
     color: $black;
     a {
       color: $black;
+      text-decoration: none;
     }
     @include media-breakpoint-down(sm) {
       font-size: 14px;
@@ -87,6 +88,7 @@
     transition: opacity .3s linear;
     a {
       color: $white;
+      text-decoration: none;
     }
     @include media-breakpoint-down(md) {
       line-height: 60px;
@@ -149,6 +151,7 @@
       }
       a {
         color: $white;
+        text-decoration: none;
         &:after {
           content: '.';
         }

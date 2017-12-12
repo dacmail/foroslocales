@@ -17,6 +17,7 @@
     .blog-name {
       color: $black;
       font-weight: bold;
+      text-decoration: none;
     }
     .nav {
       padding: 0px;
@@ -30,6 +31,7 @@
         text-transform: lowercase;
         a {
           color: $black;
+          text-decoration: none;
           &:after {
             content: '.';
           }
