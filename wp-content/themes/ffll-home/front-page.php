@@ -12,7 +12,7 @@
       <li>Fomentar el diálogo abierto entre la ciudadanía, las entidades sin ánimo de lucro y las Juntas Municipales de Distrito. Los Foros Locales son, además, un espacio de rendición de cuentas de las Presidencias de distrito ante la ciudadanía.</li>
     </ul>
 
-    <p>En esta página puedes acceder a cualquiera de los <a href="<?php echo get_permalink(get_page_by_path('distritos')) ?>">21 distritos</a> o navegar <a href="<?php echo get_permalink(get_page_by_path('temas')) ?>">por temática</a></p>
+    <p>En esta página puedes acceder a cualquiera de los <a href="<?php echo get_permalink(get_page_by_path('distritos')) ?>">21 distritos</a> o navegar <a href="<?php echo get_permalink(get_page_by_path('temas')) ?>">por temas</a>. También puedes visitar lo que hacemos en la <a href="<?php echo site_url('/red') ?>">Red de Foros</a></p>
   </div>
 </section>
 

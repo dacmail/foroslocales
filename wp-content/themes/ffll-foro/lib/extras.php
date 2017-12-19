@@ -87,8 +87,8 @@ function ungrynerd_doc_taxonomies() {
     array("un_doc"),
     array(
         "hierarchical" => true,
-        "label" => esc_html__( "Categorización", 'ungrynerd'),
-        "singular_label" => esc_html__( "Categoría", 'ungrynerd'),
+        "label" => esc_html__( "Mesas", 'ungrynerd'),
+        "singular_label" => esc_html__( "Mesa", 'ungrynerd'),
         "rewrite" => array( 'slug' => 'archivado', 'hierarchical' => true),
         'show_in_nav_menus' => false,
         )
