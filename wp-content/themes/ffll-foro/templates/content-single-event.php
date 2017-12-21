@@ -20,6 +20,7 @@
               </aside>
             </header>
             <div class="post__content">
+              <p><?php the_post_thumbnail('landscape') ?></p>
               <?= do_shortcode('[event]#_EVENTNOTES[/event]') ?>
             </div>
             <?php if (has_term('', 'event-tags')) : ?>

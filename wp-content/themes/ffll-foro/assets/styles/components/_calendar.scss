@@ -98,7 +98,7 @@
   }
   .days-names {
     td {
-      background-color: $white;
+      background-color: transparent;
       &:after {
         margin-left: 0px;
       }
@@ -107,7 +107,7 @@
   thead {
     tr {
       td {
-        background-color: $white;
+        background-color: transparent;
         text-align: center;
         vertical-align: middle;
         padding: 0px;

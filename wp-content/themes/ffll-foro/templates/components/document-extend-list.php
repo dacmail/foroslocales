@@ -8,16 +8,20 @@
     .<?= $ext; ?>
   </div>
   <div class="doc-list__document__data">
-    <h2 class="doc-list__document__title"><?php the_title(); ?></h2>
+    <h2 class="doc-list__document__title"><a target="_blank" href="<?= $file; ?>"><?php the_title(); ?></a></h2>
     <div class="doc-list__document__metas">
-      <div class="doc-list__document__archive">
-        <?= Extras\ungrynerd_svg('icon-folder-small'); ?>
-        <?php the_terms(get_the_ID(), 'un_archive'); ?>
-      </div>
-      <div class="doc-list__document__type">
-        <?= Extras\ungrynerd_svg('icon-type-small'); ?>
-        <?php the_terms(get_the_ID(), 'un_doc_type'); ?>
-      </div>
+      <?php if (has_term('', 'un_archive')): ?>
+        <div class="doc-list__document__archive">
+          <?= Extras\ungrynerd_svg('icon-folder-small'); ?>
+          <?php the_terms(get_the_ID(), 'un_archive'); ?>
+        </div>
+      <?php endif ?>
+      <?php if (has_term('', 'un_doc_type')): ?>
+        <div class="doc-list__document__type">
+          <?= Extras\ungrynerd_svg('icon-type-small'); ?>
+          <?php the_terms(get_the_ID(), 'un_doc_type'); ?>
+        </div>
+      <?php endif ?>
       <div class="doc-list__document__date">
         <?= Extras\ungrynerd_svg('icon-calendar-small'); ?>
         <?php the_time(get_option('date_format')); ?>

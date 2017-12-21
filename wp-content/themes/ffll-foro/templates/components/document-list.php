@@ -8,11 +8,13 @@
     .<?= $ext; ?>
   </div>
   <div class="doc-list__document__name">
-    <?php the_title(); ?>
+    <a target="_blank" href="<?= $file; ?>"><?php the_title(); ?></a>
   </div>
-  <div class="doc-list__document__tags">
-    <?php the_terms(get_the_ID(), 'un_archive'); ?>
-  </div>
+  <?php if (has_term('', 'un_archive')): ?>
+    <div class="doc-list__document__tags">
+      <?php the_terms(get_the_ID(), 'un_archive'); ?>
+    </div>
+  <?php endif; ?>
   <div class="doc-list__document__date">
     <?= Extras\ungrynerd_svg('icon-calendar-small'); ?>
     <?php the_time(get_option('date_format')); ?>
