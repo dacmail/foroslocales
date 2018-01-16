@@ -30,3 +30,4 @@
     </div>
   </section>
 </footer>
+<?php get_template_part('templates/cookies'); ?>

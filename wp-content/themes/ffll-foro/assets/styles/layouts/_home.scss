@@ -39,6 +39,24 @@
 .intro-home {
   padding: 60px 0px;
   font-size: 18px;
+  .info {
+    display: flex;
+    svg {
+      flex: 0 0 auto;
+    }
+    &__content {
+      padding-left: 30px;
+      a {
+        color: $black;
+        font-weight: bold;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
 }
 
 .contact-home {

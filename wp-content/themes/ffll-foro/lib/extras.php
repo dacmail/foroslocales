@@ -303,7 +303,7 @@ function ungrynerd_remove_menu_pages() {
   global $user_ID;
   if (!current_user_can('activate_plugins')) {
     remove_menu_page('edit-comments.php');
-    remove_menu_page('wpcf7');
+    //remove_menu_page('wpcf7');
     remove_menu_page('edit.php?post_type=page');
   }
 }

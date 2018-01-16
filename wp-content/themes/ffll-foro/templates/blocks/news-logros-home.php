@@ -3,7 +3,7 @@
 <?php if ($logros): ?>
   <?php $news = new \WP_Query(array(
                         'post_type' => 'post',
-                        'posts_per_page' => 3,
+                        'posts_per_page' => 1,
                         'cat' => $logros)); ?>
   <?php if ($news->have_posts()): ?>
     <section class="sections news-home news-home--logros">
@@ -14,18 +14,12 @@
         </div>
         <div class="row">
           <?php while ($news->have_posts()) : $news->the_post(); ?>
-            <div class="col-md-4">
+            <div class="col-md-6 offset-md-3">
               <article class="post post--home">
-                <?php the_post_thumbnail('landscape-small'); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('landscape-small'); ?></a>
                 <h2 class="post__title">
                   <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h2>
-                <span class="post__date"><?php the_time(get_option('date_format')); ?></span>
-                <?php the_excerpt(); ?>
-                <div class="post__tags">
-                  <?= Extras\ungrynerd_svg('icon-tag'); ?>
-                  <?php the_terms(get_the_ID(), 'un_global', '', ', '); ?>
-                </div>
               </article>
             </div>
           <?php endwhile; ?>

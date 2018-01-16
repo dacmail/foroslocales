@@ -68,7 +68,7 @@
       height: auto;
       @include media-breakpoint-down(sm) {
         margin: 0px 5%;
-        width: 90%;
+        max-width: 90%;
       }
     }
   }

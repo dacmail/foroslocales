@@ -5,9 +5,9 @@
     <section class="logo-menu">
       <nav class="navbar navbar-expand-md">
         <?php
-        if (has_nav_menu('primary_navigation')) :
+        if (has_nav_menu('footer_navigation')) :
           wp_nav_menu([
-            'theme_location' => 'primary_navigation',
+            'theme_location' => 'footer_navigation',
             'menu_class' => 'nav navbar-nav mr-auto',
             'container_id' => 'foot-nav',
             'container_class' => 'navbar-collapse navbar-left'

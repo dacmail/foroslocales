@@ -35,6 +35,12 @@
             $('.nav-primary .blog-name').removeClass('visible');
           }
         });
+
+        if (localStorage.controlCookie) {
+          $('.cookies').hide();
+        } else {
+          localStorage.controlCookie = 1;
+        }
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
