@@ -9,7 +9,7 @@
       <?= Extras\ungrynerd_svg('icon-info'); ?>
       <div class="info__content">
         <p>La documentación que estás viendo aquí es municipal y general: hemos recopilado planes, bases de datos e información variada sobre la gestión del ayuntamiento de Madrid para facilitar tu actividad en los Foros Locales, sabemos que a veces no es fácil encontrar lo que necesitáis.</p>
-        <p>Recuerda que puedes buscar información concreta de tu distrito u otros <a href="<?= home_url('#distritos') ?>">aquí</a> o sobre los temas que trabajáis en los Foros de forma transversal, en todos ellos <a href="<?= home_url('#temas') ?>">aquí</a>.</p>
+        <p>Recuerda que puedes buscar información concreta de tu distrito u otros <a href="<?= get_permalink(98) ?>">aquí</a> o sobre los temas que trabajáis en los Foros de forma transversal, en todos ellos <a href="<?= get_permalink(100) ?>">aquí</a>.</p>
       </div>
     </aside>
     <?php get_template_part('templates/components/filters', 'documents') ?>

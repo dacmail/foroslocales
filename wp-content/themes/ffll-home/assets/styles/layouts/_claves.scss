@@ -172,3 +172,69 @@
     }
   }
 }
+
+.contact-form {
+  max-width: 700px;
+  margin: 0px auto;
+  .wpcf7-form {
+    p {
+      margin: 0px 0px 20px 0px;
+    }
+
+    label {
+      display: none;
+    }
+    .wpcf7-form-control-wrap {
+      width: 100%;
+    }
+    .wpcf7-text,
+    .wpcf7-textarea {
+      width: 100%;
+      height: 60px;
+      background-color: $white;
+      border: solid 5px $black;
+      border-radius: 0px;
+      webkit-appearance: none;
+      padding: 20px;
+      color: $black;
+      font-size: 16px;
+      font-weight: bold;
+      &::placeholder {
+        color: $black;
+      }
+    }
+    .wpcf7-textarea {
+      height: auto;
+      &::placeholder {
+        color: $black;
+      }
+    }
+
+    .wpcf7-submit {
+      display: inline-block;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: bold;
+      color: $black;
+      padding: 10px 20px;
+      background-color: $white;
+      border: solid 4px $black;
+      text-transform: lowercase;
+      text-decoration: none;
+      float: right;
+      border-radius: 0px;
+      webkit-appearance: none;
+    }
+    span.wpcf7-not-valid-tip {
+      font-style: italic;
+      font-size: 13px;
+      text-align: right;
+    }
+    .wpcf7-response-output {
+      border-width: 5px;
+      padding: 20px;
+      margin: 20px 0px;
+    }
+  }
+}
+
