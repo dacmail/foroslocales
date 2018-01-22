@@ -75,6 +75,7 @@
   border: solid 5px $black;
   margin: 0px 0px 20px 0px;
   position: relative;
+  overflow: hidden;
   select {
     padding: 15px 20px;
     width: 130%;
@@ -102,5 +103,17 @@
     top:50%;
     right: 20px;
     margin-top: -5px;
+    z-index: 2;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: $white;
+    width: 60px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
   }
 }

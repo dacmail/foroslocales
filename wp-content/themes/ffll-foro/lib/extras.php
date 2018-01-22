@@ -221,6 +221,8 @@ function ungrynerd_doc_icon($extension = '') {
   $preview_formats = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
   if (in_array($extension, $preview_formats)) {
     $icon = 'icon-preview';
+  } elseif ($extension=='web') {
+    $icon = 'icon-link';
   }
   return ungrynerd_svg($icon);
 }

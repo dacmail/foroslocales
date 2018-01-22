@@ -1,5 +1,4 @@
 <?php use Roots\Sage\Extras; ?>
-<?php var_dump(get_queried_object('term_id')); ?>
 <section class="posts-list">
   <div class="supertitle">
     <h1 class="title-search"><?php single_term_title(); ?>. <?= Extras\ungrynerd_svg('icon-tag'); ?></h1>

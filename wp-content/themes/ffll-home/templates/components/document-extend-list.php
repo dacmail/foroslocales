@@ -3,7 +3,7 @@
 <?php $file = get_post_meta(get_the_ID(), '_ungrynerd_file', true); ?>
 <?php if (!empty($file)): ?>
   <?php $ext = pathinfo($file, PATHINFO_EXTENSION); ?>
-  <?php if (strlen($ext)>3) : $ext = "web"; endif; ?>
+  <?php if (strlen($ext)>3 || strlen($ext)<1) : $ext = "web"; endif; ?>
 <?php endif ?>
 <div class="doc-list__document">
   <div class="doc-list__document__data">

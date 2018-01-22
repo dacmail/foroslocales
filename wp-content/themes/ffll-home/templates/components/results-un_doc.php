@@ -1,6 +1,7 @@
 <?php use Roots\Sage\Extras; ?>
 <?php $file = get_post_meta(get_the_ID(), '_ungrynerd_file', true); ?>
 <?php $ext = pathinfo($file, PATHINFO_EXTENSION); ?>
+<?php if (strlen($ext)>3 || strlen($ext)<1): $ext = "web"; endif; ?>
 <div class="results__format <?= $ext ?>">
   .<?= $ext; ?>
 </div>

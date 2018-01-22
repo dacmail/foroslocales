@@ -165,6 +165,8 @@ function ungrynerd_doc_icon($extension = '') {
   $preview_formats = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
   if (in_array($extension, $preview_formats)) {
     $icon = 'icon-preview';
+  } elseif ($extension=='web') {
+    $icon = 'icon-link';
   }
   return ungrynerd_svg($icon);
 }
@@ -272,7 +274,7 @@ function pippin_taxonomy_add_new_meta_field() {
   ?>
   <div class="form-field">
     <label for="form_emails"><?php _e('Correos electrónicos', 'ungrynerd'); ?></label>
-    <input type="text" name="form_emails" id="form_emails" value="">
+    <textarea rows="5" cols="50" type="text" name="form_emails" id="form_emails"></textarea>
     <p class="description"><?php _e('Lista de correos separados por comas','ungrynerd'); ?></p>
   </div>
 <?php
@@ -284,7 +286,7 @@ function pippin_taxonomy_edit_meta_field($term) {
   <tr class="form-field">
   <th scope="row" valign="top"><label for="form_emails"><?php _e('Correos electrónicos', 'ungrynerd'); ?></label></th>
     <td>
-      <input type="text" name="form_emails" id="form_emails" value="<?php echo esc_attr($form_emails) ? esc_attr($form_emails) : ''; ?>">
+      <textarea rows="5" cols="50" type="text" name="form_emails" id="form_emails"><?php echo esc_attr($form_emails) ? esc_attr($form_emails) : ''; ?></textarea>
       <p class="description"><?php _e('Lista de correos separados por comas','ungrynerd'); ?></p>
     </td>
   </tr>
