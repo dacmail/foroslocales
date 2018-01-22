@@ -20,7 +20,7 @@
           <li class="blog-33"><a target="_blank" id="latina-link" href="<?php echo site_url('latina'); ?>">Latina</a></li>
           <li class="blog-23"><a target="_blank" id="carabanchel-link" href="<?php echo site_url('carabanchel'); ?>">Carabanchel</a></li>
           <li class="blog-40"><a target="_blank" id="usera-link" href="<?php echo site_url('usera'); ?>">Usera</a></li>
-          <li class="blog-44"><a target="_blank" id="puente-de-vallecas-link" href="<?php echo site_url('puente-de-vallecas'); ?>">Puente de Vallecas</a></li></ul>
+          <li class="blog-44"><a target="_blank" id="puente-de-vallecas-link" href="<?php echo site_url('puente-de-vallecas'); ?>">Puente de Vallecas</a></li>
           <li class="blog-35"><a target="_blank" id="moratalaz-link" href="<?php echo site_url('moratalaz'); ?>">Moratalaz</a></li>
           <li class="blog-27"><a target="_blank" id="ciudad-lineal-link" href="<?php echo site_url('ciudad-lineal'); ?>">Ciudad Lineal</a></li>
           <li class="blog-32"><a target="_blank" id="hortaleza-link" href="<?php echo site_url('hortaleza'); ?>">Hortaleza</a></li>
@@ -29,6 +29,7 @@
           <li class="blog-41"><a target="_blank" id="vicalvaro-link" href="<?php echo site_url('vicalvaro'); ?>">Vicálvaro</a></li>
           <li class="blog-38"><a target="_blank" id="san-blas-canillejas-link" href="<?php echo site_url('san-blas-canillejas'); ?>">San Blas - Canillejas</a></li>
           <li class="blog-22"><a target="_blank" id="barajas-link" href="<?php echo site_url('barajas'); ?>">Barajas</a></li>
+        </ul>
       </div>
       <div class="col-md-6">
         <div class="map">
