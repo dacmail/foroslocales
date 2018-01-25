@@ -301,3 +301,20 @@ function save_taxonomy_custom_meta($term_id) {
 }
 add_action('edited_un_global', __NAMESPACE__ . '\save_taxonomy_custom_meta', 10, 2 );
 add_action('create_un_global', __NAMESPACE__ . '\save_taxonomy_custom_meta', 10, 2 );
+
+
+function ungrynerd_custom_toolbar_link($wp_admin_bar) {
+  $args = array(
+    'id' => 'pdfmanual',
+    'title' => 'Manual Usuario',
+    'href' => get_template_directory_uri() . '/manual-foros_usuario.pdf',
+  );
+  $wp_admin_bar->add_node($args);
+  $args = array(
+    'id' => 'pdfmanualadmin',
+    'title' => 'Manual Administrador',
+    'href' => get_template_directory_uri() . '/manual-foros_admin.pdf',
+  );
+  $wp_admin_bar->add_node($args);
+}
+add_action('admin_bar_menu', __NAMESPACE__ . '\\ungrynerd_custom_toolbar_link', 999);
