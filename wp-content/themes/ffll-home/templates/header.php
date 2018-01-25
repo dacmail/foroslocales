@@ -12,7 +12,7 @@
 <nav class="menu nav-primary sticky-top">
   <div class="container">
     <div class="navbar navbar-expand-lg justify-content-between">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#primary-navigation" aria-controls="primary-navigation" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
           &#9776;
         </span>
@@ -22,7 +22,7 @@
         wp_nav_menu([
           'theme_location' => 'primary_navigation',
           'menu_class' => 'nav navbar-nav mr-auto',
-          'container_id' => 'primary-nav',
+          'container_id' => 'primary-navigation',
           'container_class' => 'collapse navbar-collapse navbar-left'
         ]);
       endif;

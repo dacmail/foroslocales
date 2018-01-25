@@ -11,7 +11,7 @@
 </section>
 <nav class="menu nav-primary sticky-top">
   <div class="container">
-    <div class="navbar navbar-toggleable-md justify-content-between">
+    <div class="navbar navbar-expand-lg justify-content-between">
       <?php if (is_front_page()): ?>
         <h1 class="blog-name"><a href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
       <?php else: ?>
