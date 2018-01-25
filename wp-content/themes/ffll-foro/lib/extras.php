@@ -343,3 +343,20 @@ function disable_emojicons_tinymce($plugins) {
     return array();
   }
 }
+
+
+function ungrynerd_custom_toolbar_link($wp_admin_bar) {
+  $args = array(
+    'id' => 'pdfmanual',
+    'title' => 'Manual Usuario',
+    'href' => get_template_directory_uri() . '/manual-foros_usuario.pdf',
+  );
+  $wp_admin_bar->add_node($args);
+  $args = array(
+    'id' => 'pdfmanualadmin',
+    'title' => 'Manual Administrador',
+    'href' => get_template_directory_uri() . '/manual-foros_admin.pdf',
+  );
+  $wp_admin_bar->add_node($args);
+}
+add_action('admin_bar_menu', __NAMESPACE__ . '\\ungrynerd_custom_toolbar_link', 999);

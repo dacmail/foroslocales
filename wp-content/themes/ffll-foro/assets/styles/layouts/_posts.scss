@@ -257,6 +257,15 @@
       margin-top: 50px;
     }
     .post {
+      &__thumb {
+        width: 100%;
+        display: block;
+        margin-bottom: 15px;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
       &__title {
         font-size: 24px;
         margin-top: 10px;
