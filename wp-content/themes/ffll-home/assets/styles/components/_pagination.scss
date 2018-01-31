@@ -22,6 +22,10 @@
     &.next {
       background-color: $black;
     }
+    &.current {
+      background-color: $black;
+      color: $white;
+    }
   }
 }
 .em-pagination {

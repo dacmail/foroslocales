@@ -34,6 +34,18 @@
 
 .header {
   padding: 50px 0px;
+  &.color-1 {
+    background-color: #4bb169;
+  }
+  &.color-2 {
+    background-color: #1b9dd9;
+  }
+  &.color-3 {
+    background-color: #e94655;
+  }
+  &.color-4 {
+    background-color: #ffe406;
+  }
   &__site-name {
     text-align: center;
     display: block;
@@ -111,7 +123,7 @@
     .menu-item {
       font-weight: bold;
       color: $white;
-      margin-right: 30px;
+      margin-right: 20px;
       text-transform: lowercase;
       @include media-breakpoint-down(md) {
         margin-right: 10px;

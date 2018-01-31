@@ -32,7 +32,7 @@
   </div>
 </nav>
 <?php if (is_front_page()): ?>
-  <header class="header">
+  <header class="header color-<?= rand(1,4); ?>">
     <div class="container">
       <a class="header__site-name" href="<?= esc_url(home_url('/')); ?>">
         <img src="<?= Assets\asset_path('images/logo-foros-locales.svg'); ?>" alt="<?php bloginfo('name'); ?>">
