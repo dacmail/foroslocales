@@ -48,7 +48,7 @@ function ungrynerd_filter_posts($query) {
     $query->set('post_type', array('post', 'event', 'un_doc'));
     $query->set('multisite', 1);
     $query->set('sites__not_in', array(1));
-  } elseif (is_post_type_archive('un_doc') && $query->is_main_query()) {
+  } elseif (is_post_type_archive('un_doc') && $query->is_main_query() && !is_admin()) {
     if (get_query_var('por') && get_query_var('tipo')) {
       $tax_query['relation'] = 'AND';
     }
