@@ -181,6 +181,14 @@ function ungrynerd_filter_documents($query) {
     $query->set('order', 'ASC');
   }
 
+  if ( $query->is_home() && $query->is_main_query() ) {
+    $term = get_term_by('slug', 'logros', 'category');
+    if ($term) {
+      $query->set( 'category__not_in', array($term->term_id));
+    }
+  }
+
+
 
   // Filtra por tipo y categorización de documentos
   if (is_post_type_archive('un_doc') && $query->is_main_query()) {
