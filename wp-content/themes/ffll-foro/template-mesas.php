@@ -14,7 +14,9 @@
           <?php $mesas = get_terms('un_archive', array('hide_empty' => 0, 'exclude' => $exclude->term_id)) ?>
           <?php foreach ($mesas as $mesa) : ?>
             <li class="entidades__item">
-              <?php echo $mesa->name; ?>
+              <a href="<?= get_term_link($mesa, 'un_archive')?>">
+                <?php echo $mesa->name; ?>
+              </a>
             </li>
           <?php endforeach; ?>
         </ul>
