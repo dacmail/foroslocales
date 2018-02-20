@@ -9,7 +9,7 @@
       'post_type' => 'event',
       'multisite' => 1,
       'meta_key' => '_event_start_date',
-      'meta_value'=> '2018-01-18'
+      'meta_value'=> Date('Y-m-d')
     )); ?>
     <?php if ($events->have_posts()): ?>
       <?php while ($events->have_posts()) : $events->the_post(); ?>
@@ -19,7 +19,7 @@
       <?php endwhile; ?>
       <?= Extras\ungrynerd_pagination(); ?>
     <?php else: ?>
-      <h2>No hay resultados para tu búsqueda</h2>
+      <h2>No hay eventos para hoy</h2>
     <?php endif ?>
   </div>
 </section>

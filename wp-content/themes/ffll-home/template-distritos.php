@@ -13,7 +13,7 @@
           <li class="blog-36"><a target="_blank" id="retiro-link" href="<?php echo site_url('retiro'); ?>">Retiro</a></li>
           <li class="blog-37"><a target="_blank" id="salamanca-link" href="<?php echo site_url('salamanca'); ?>">Salamanca</a></li>
           <li class="blog-25"><a target="_blank" id="chamartin-link" href="<?php echo site_url('chamartin'); ?>">Chamartín</a></li>
-          <li class="blog-39"><a target="_blank" id="tetuan-link" href="<?php echo site_url('tetuan'); ?>">Tetuan</a></li>
+          <li class="blog-39"><a target="_blank" id="tetuan-link" href="<?php echo site_url('tetuan'); ?>">Tetuán</a></li>
           <li class="blog-26"><a target="_blank" id="chamberi-link" href="<?php echo site_url('chamberi'); ?>">Chamberí</a></li>
           <li class="blog-28"><a target="_blank" id="fuencarral-el-pardo-link" href="<?php echo site_url('fuencarral-el-pardo'); ?>">Fuencarral - El Pardo</a></li>
           <li class="blog-34"><a target="_blank" id="moncloa-aravaca-link" href="<?php echo site_url('moncloa-aravaca'); ?>">Moncloa - Aravaca</a></li>

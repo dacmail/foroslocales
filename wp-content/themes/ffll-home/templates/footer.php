@@ -21,7 +21,7 @@
   <div class="footer-bg"></div>
   <section class="preheader">
     <div class="container">
-      <h2 class="preheader__title">Foros Locales Madrid</h2>
+      <h2 class="preheader__title">Ayuntamiento de Madrid</h2>
       <a href="http://madrid.es" class="preheader__logo">
         <img alt="Foros Locales Madrid" src="<?= Assets\asset_path('images/logo_madrid.png'); ?>">
       </a>
