@@ -16,7 +16,6 @@
     }
     .follow {
       color: $black;
-      text-transform: lowercase;
       font-weight: bold;
       svg {
         position: relative;
@@ -33,7 +32,6 @@
         font-weight: bold;
         color: $black;
         margin-left: 30px;
-        text-transform: lowercase;
         a {
           color: $black;
         }

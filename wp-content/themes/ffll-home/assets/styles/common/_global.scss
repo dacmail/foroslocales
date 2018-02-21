@@ -15,7 +15,6 @@ img {
   line-height: 0.83;
   color: $black;
   margin-bottom: 55px;
-  text-transform: lowercase;
   @include media-breakpoint-down(md) {
     font-size: 30px;
     margin-bottom: 30px;
