@@ -152,9 +152,6 @@
       a {
         color: $white;
         text-decoration: none;
-        &:after {
-          content: '.';
-        }
       }
       &.search {
         a {

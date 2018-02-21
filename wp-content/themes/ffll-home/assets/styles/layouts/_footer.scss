@@ -36,9 +36,6 @@
         text-transform: lowercase;
         a {
           color: $black;
-          &:after {
-            content: '.';
-          }
         }
       }
     }
