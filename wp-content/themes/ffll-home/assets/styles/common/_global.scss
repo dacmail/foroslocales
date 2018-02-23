@@ -30,6 +30,9 @@ img {
     font-weight: bold;
     line-height: 1.0;
     @extend .container;
+    @include media-breakpoint-down(md) {
+      font-size: 30px;
+    }
   }
 }
 

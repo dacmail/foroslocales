@@ -59,7 +59,7 @@
 .nav-primary {
   background-color: $black;
   .navbar-toggler-right {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(xl) {
       right: 0px;
       top: 0px;
       padding: 0px;
@@ -71,7 +71,7 @@
       }
     }
     .navbar-toggler-icon {
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(xl) {
         color: $white;
         width: auto;
         height: auto;
@@ -98,7 +98,7 @@
     .navbar-collapse {
       flex-basis: auto;
       height: 100%;
-      @include media-breakpoint-down(md) {
+      @media (max-width: 1200px) {
         background-color: $black;
         height: auto;
         padding-bottom: 20px;
@@ -114,7 +114,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(xl) {
       height: auto;
       background-color: $black;
       padding: 15px 0px;

@@ -1,5 +1,8 @@
 .claves {
   padding: 80px 0px 60px 0px;
+  @include media-breakpoint-down(md) {
+    padding: 30px 0px;
+  }
   &__list {
     display: flex;
     flex-wrap: wrap;
