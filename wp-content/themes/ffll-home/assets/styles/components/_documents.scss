@@ -35,7 +35,7 @@
     border-bottom: solid 2px $black;
     @include media-breakpoint-down(sm) {
       flex-flow: column;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
     }
     &__data {
       margin: 0px 20px 0px 0px;
@@ -48,6 +48,9 @@
       font-weight: bold;
       line-height: 1.33;
       color: $black;
+      a {
+        color: $black;
+      }
     }
     &__metas {
       display: flex;

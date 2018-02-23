@@ -7,7 +7,17 @@
 <?php endif ?>
 <div class="doc-list__document">
   <div class="doc-list__document__data">
-    <h2 class="doc-list__document__title"><?php the_title(); ?></h2>
+    <h2 class="doc-list__document__title">
+      <?php if (!empty($file)) : ?>
+        <a target="_blank" href="<?= $file; ?>">
+          <?php the_title(); ?>
+        </a>
+      <?php else: ?>
+        <a target="_blank" href="<?= esc_url(get_post_meta(get_the_ID(), '_ungrynerd_web', true)); ?>">
+          <?php the_title(); ?>
+        </a>
+      <?php endif ?>
+    </h2>
     <div class="doc-list__document__metas">
       <?php $types = get_the_terms(get_the_ID(), 'un_doc_type' ); ?>
       <?php if ($types): ?>
