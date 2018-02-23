@@ -206,6 +206,7 @@
       width: 100%;
       @include media-breakpoint-down(md) {
         width: 90%;
+        padding-top: 10px;
       }
     }
   }
