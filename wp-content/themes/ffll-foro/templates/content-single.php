@@ -23,8 +23,7 @@
           <?php the_content(); ?>
         </div>
         <div class="post__tags">
-          <?= Extras\ungrynerd_svg('icon-tag'); ?>
-          <?php the_terms(get_the_ID(), 'un_global', '', ', '); ?>
+          <?php the_terms(get_the_ID(), 'un_global', Extras\ungrynerd_svg('icon-tag'), ', '); ?>
         </div>
       </article>
     <?php endwhile; ?>

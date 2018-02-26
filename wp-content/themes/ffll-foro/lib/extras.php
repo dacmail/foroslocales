@@ -81,7 +81,7 @@ function ugnrynerd_doc_post_type()  {
 
 function ungrynerd_doc_taxonomies() {
     register_taxonomy("un_archive",
-    array("un_doc", "post"),
+    array("un_doc", "post", "event"),
     array(
         "hierarchical" => true,
         "label" => esc_html__( "Mesas", 'ungrynerd'),

@@ -22,8 +22,7 @@
               <span class="post__date"><?php the_time(get_option('date_format')); ?></span>
               <?php the_excerpt(); ?>
               <div class="post__tags">
-                <?= Extras\ungrynerd_svg('icon-tag'); ?>
-                <?php the_terms(get_the_ID(), 'un_global', '', ', '); ?>
+                <?php the_terms(get_the_ID(), 'un_global', Extras\ungrynerd_svg('icon-tag'), ', '); ?>
               </div>
             </article>
           </div>

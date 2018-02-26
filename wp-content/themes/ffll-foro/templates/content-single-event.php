@@ -18,8 +18,7 @@
             </div>
             <?php if (has_term('', 'event-tags')) : ?>
             <div class="post__tags">
-              <?= Extras\ungrynerd_svg('icon-tag'); ?>
-              <?php the_terms(get_the_ID(), 'un_global', '', ', '); ?>
+              <?php the_terms(get_the_ID(), 'un_global', Extras\ungrynerd_svg('icon-tag'), ', '); ?>
             </div>
             <?php endif; ?>
           </article>
@@ -29,9 +28,9 @@
             <span class="post__date"><?php the_time(get_option('date_format')); ?></span>
             <span class="post__date post__date--time"><?php the_time('H:i'); ?></span>
             <?= do_shortcode('[event]{has_location}#_LOCATIONMAP{/has_location}[/event]') ?>
-            <?= do_shortcode('[event]{has_location}<p class="post__location">#_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONPOSTCODE, #_LOCATIONTOWN){/has_location}[/event]</p>') ?>
-            <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>">Añádelo a Google Calendar</a></p>
-            <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTICALURL[/event]') ?>">Añádelo a tu Calendario</a></p>
+            <?= do_shortcode('[event]{has_location}<p class="post__location">#_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONTOWN){/has_location}[/event]</p>') ?>
+            <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTGCALURL[/event]') ?>"><?php esc_html_e('Añádelo a Google Calendar', 'ungrynerd'); ?></a></p>
+            <p><a target="_blank" class="button" href="<?= do_shortcode('[event]#_EVENTICALURL[/event]') ?>"><?php esc_html_e('Añádelo a tu Calendario', 'ungrynerd'); ?></a></p>
           </aside>
         </div>
       </div>
