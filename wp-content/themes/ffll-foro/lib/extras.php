@@ -277,13 +277,15 @@ function ungrynerd_og_schema( $output ) {
 
 function ugnrynerd_og_tags() {
   global $post;
-  if (is_singular()) {
-    echo '<meta property="og:title" content="' . get_the_title() . '"/>';
+  if (is_singular() && !is_front_page()) {
+    echo '<meta property="og:title" content="' . get_the_title() . ' - ' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
     echo '<meta property="og:type" content="article"/>';
     echo '<meta property="og:url" content="' . get_permalink() . '"/>';
+  } else {
+    echo '<meta property="og:title" content="' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
   }
 
-  echo '<meta property="og:site_name" content="' . get_bloginfo('name') . '"/>';
+  echo '<meta property="og:site_name" content="' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
 
   if (!has_post_thumbnail()) {
     echo '<meta property="og:image" content="' . get_header_image() . '"/>';
