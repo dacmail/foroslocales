@@ -236,11 +236,14 @@ function disable_emojicons_tinymce($plugins) {
 
 //Añade el term_id como campo oculto al formulario
 function ungrynerd_add_term_id_to_form($tag, $unused) {
-  if ( $tag['name'] != 'tema' )
-  return $tag;
-
-  $tag['values'] = get_queried_object('term_id');
-  $tag['options'] = array('readonly');
+  if ($tag['name'] == 'tema') {
+    $tag['values'] = isset(get_queried_object()->term_id) ?array(get_queried_object()->term_id) : array();
+    $tag['options'] = array('readonly');
+  } elseif ($tag['name'] == 'tema_slug') {
+    $tag['values'] = isset(get_queried_object()->name) ? array(get_queried_object()->name) : array();
+    $tag['options'] = array('readonly');
+  }
+  
   return $tag;
 }
 add_filter( 'wpcf7_form_tag', __NAMESPACE__ . '\ungrynerd_add_term_id_to_form', 10, 2);
