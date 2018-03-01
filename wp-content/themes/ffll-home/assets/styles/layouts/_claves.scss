@@ -153,6 +153,10 @@
         }
       }
     }
+    &__location {
+      color: $black;
+      font-weight: bold;
+    }
     &__link {
       background-color: rgba($black, 0.1);
       width: 60px;

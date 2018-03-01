@@ -3,6 +3,9 @@
   border-bottom: solid 2px $black;
   padding-bottom: 35px;
   margin-bottom: 50px;
+  h2 + & {
+    margin-top: 60px;
+  }
   svg {
     flex: 0 0 auto;
   }

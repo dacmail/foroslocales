@@ -65,7 +65,6 @@ class WP_Query_Multisite {
         $ms_select = " SELECT $wpdb->posts.*, '$site_ID' as site_ID FROM $wpdb->posts $ms_select ";
 
         $this->ms_select[] = $ms_select;
-
         restore_current_blog();
 
       }

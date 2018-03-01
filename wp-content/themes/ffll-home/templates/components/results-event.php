@@ -13,14 +13,6 @@
       <?= Extras\ungrynerd_svg('icon-calendar-small'); ?>
       <?php the_time(get_option('date_format')); ?> // <?php the_time('H:i'); ?>
     </div>
-    <?= do_shortcode('[event]
-        {has_location}
-          <div class="results__location">
-            '. Extras\ungrynerd_svg('icon-location') .'
-            #_LOCATIONNAME (#_LOCATIONADDRESS, #_LOCATIONPOSTCODE, #_LOCATIONTOWN)
-          </div>
-        {/has_location}
-      [/event]'); ?>
   </div>
 </div>
 <span class="results__link results__link--empty "></span>
