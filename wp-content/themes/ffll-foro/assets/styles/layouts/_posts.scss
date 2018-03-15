@@ -52,6 +52,7 @@
     text-align: right;
     cursor: pointer;
     position: relative;
+    text-decoration: underline;
     ul {
       top: 100%;
       left: -15px;
@@ -66,7 +67,10 @@
         margin-bottom: 5px;
         a {
           color: $black;
-          text-decoration: none;
+          text-decoration: underline;
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
     }

@@ -278,20 +278,26 @@ function ungrynerd_og_schema( $output ) {
 function ugnrynerd_og_tags() {
   global $post;
   if (is_singular() && !is_front_page()) {
+    echo '<meta property="twitter:description" content="' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
     echo '<meta property="og:title" content="' . get_the_title() . ' - ' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
     echo '<meta property="og:type" content="article"/>';
     echo '<meta property="og:url" content="' . get_permalink() . '"/>';
   } else {
+    echo '<meta property="twitter:description" content="' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
     echo '<meta property="og:title" content="' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
+
   }
 
+  echo '<meta name="twitter:card" content="summary_large_image">';
   echo '<meta property="og:site_name" content="' . get_bloginfo('name') . ' | ' . get_bloginfo('description') . '"/>';
 
   if (!has_post_thumbnail()) {
     echo '<meta property="og:image" content="' . get_header_image() . '"/>';
+    echo '<meta property="twitter:image:src" content="' . get_header_image() . '"/>';
   } else {
     $thumbnail_src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'medium');
     echo '<meta property="og:image" content="' . esc_attr($thumbnail_src[0]) . '"/>';
+    echo '<meta property="twitter:image:src" content="' . esc_attr($thumbnail_src[0]) . '"/>';
   }
 }
 add_action( 'wp_head', __NAMESPACE__ . '\ugnrynerd_og_tags', 5 );

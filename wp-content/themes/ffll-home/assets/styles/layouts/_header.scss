@@ -82,6 +82,7 @@
   .follow {
     color: $white;
     font-weight: bold;
+    text-decoration: none;
     svg {
       position: relative;
       top: 2px;
@@ -132,6 +133,7 @@
       }
       a {
         color: $white;
+        text-decoration: none;
       }
     }
   }

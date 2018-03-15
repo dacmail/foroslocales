@@ -125,6 +125,14 @@
         display: block;
         line-height: 60px;
       }
+      &:hover {
+        background-color: $black;
+        svg {
+          path {
+            fill: rgba($white, .9);
+          }
+        }
+      }
     }
   }
 }

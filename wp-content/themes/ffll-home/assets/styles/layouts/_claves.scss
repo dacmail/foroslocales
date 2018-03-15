@@ -20,6 +20,7 @@
         display: block;
         background-color: $light;
         border: solid 2px $white;
+        text-decoration: none;
         padding: 27px 10px;
         color: $black;
         height: 100%;
@@ -117,6 +118,7 @@
         font-weight: bold;
         line-height: 1.0;
         border: solid 5px $black;
+        text-decoration: none;
         color: $black;
       }
     }
@@ -170,12 +172,23 @@
         flex: 0 0 100%;
         margin-bottom: 0px;
       }
+      &:hover {
+        background-color: $black;
+        svg {
+          path {
+            fill: rgba($white, .9);
+          }
+        }
+      }
       &--empty {
         background-color: transparent;
         @include media-breakpoint-down(sm) {
           display: none;
         }
-      }
+        &:hover {
+          background-color: transparent;
+        }
+      } 
     }
   }
 }
