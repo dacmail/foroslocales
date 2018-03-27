@@ -14,12 +14,13 @@
         </div>
         <div class="row">
           <?php while ($news->have_posts()) : $news->the_post(); ?>
-            <div class="col-md-6 offset-md-3">
+            <div class="col">
               <article class="post post--home">
                 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('landscape-small'); ?></a>
                 <h2 class="post__title">
                   <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h2>
+                <?php the_excerpt(); ?>
               </article>
             </div>
           <?php endwhile; ?>

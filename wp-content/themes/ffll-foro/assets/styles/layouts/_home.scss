@@ -34,6 +34,9 @@
       margin-bottom: 30px;
     }
   }
+  .row {
+    justify-content: center;
+  }
   .col {
     max-width: 50%;
     @include media-breakpoint-down(md) {
