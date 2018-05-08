@@ -3,7 +3,7 @@
 <?php if ($logros): ?>
   <?php $news = new \WP_Query(array(
                         'post_type' => 'post',
-                        'posts_per_page' => 1,
+                        'posts_per_page' => 3,
                         'cat' => $logros)); ?>
   <?php if ($news->have_posts()): ?>
     <section class="sections news-home news-home--logros">

@@ -243,7 +243,7 @@ function ungrynerd_add_term_id_to_form($tag, $unused) {
     $tag['values'] = isset(get_queried_object()->name) ? array(get_queried_object()->name) : array();
     $tag['options'] = array('readonly');
   }
-  
+
   return $tag;
 }
 add_filter( 'wpcf7_form_tag', __NAMESPACE__ . '\ungrynerd_add_term_id_to_form', 10, 2);
@@ -256,11 +256,13 @@ function ungrynerd_prepare_form($wpcf7) {
 
   $mailProp = $wpcf7->get_properties('mail');
 
-  $emails = get_term_meta($posted_data['tema'], 'form_emails', true);
+  if (!empty($posted_data['tema'])) {
+    $emails = get_term_meta($posted_data['tema'], 'form_emails', true);
 
-  $mailProp['mail']['additional_headers'] = "Bcc: " . $emails;
+    $mailProp['mail']['additional_headers'] = "Bcc: " . $emails;
 
-  $wpcf7->set_properties(array('mail' => $mailProp['mail']));
+    $wpcf7->set_properties(array('mail' => $mailProp['mail']));
+  }
 
   update_option('___debugforms', serialize($submission));
 
